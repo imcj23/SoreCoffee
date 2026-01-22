@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* --bg-main: #07080B;
+  --bg-card: #181819;
+  --bg-secondary: #383632;
+
+  --text-main: #E8E6E6;
+  --text-muted: #726D64;
+
+  --accent-primary: #CB8236;
+  --accent-secondary: #D3B881;
+  --accent-dark: #8C4821; */
+  --primary-color:#F6EDE4;
+  --secondary-color:#DC7331;
+
+  --text-color:#07080C;
+}
+
+*{
+    font-family: 'Montserrat',sans-serif;
+}
+body {
+    background-color: var(--primary-color);
+}
+
+.navbar-tag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s ease-out;
+}
