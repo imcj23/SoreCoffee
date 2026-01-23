@@ -107,7 +107,7 @@ export default function Navbar() {
             <img
               src={Logo}
               alt="SoreCoffee"
-              className="w-16 h-16 object-contain"
+              className="w-20 h-20 object-contain"
             />
             <div>
               <h1 className="text-xl font-bold tracking-wide">

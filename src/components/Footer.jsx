@@ -15,7 +15,7 @@ export default function Footer() {
 
   const openInstagram = () => {
     const webUrl = `https://instagram.com/${instagramUsername}`;
-    const appUrl = `instagram://user?username=${instagramUsername}`;
+    const appUrl = `https://www.instagram.com/${instagramUsername}`;
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     if (isMobile) {
