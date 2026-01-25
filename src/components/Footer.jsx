@@ -9,8 +9,8 @@ import {
 
 export default function Footer() {
   const instagramUsername = "sorecoffee";
-  const phoneNumber = "6281234567890";
-  const formattedPhone = "0812-3456-7890";
+  const phoneNumber = "6285222255234";
+  const formattedPhone = "6285222255234";
   const email = "info@kopisore.com";
 
   const openInstagram = () => {
@@ -67,9 +67,9 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               {[
-                { name: "Coffee Based", desc: "Espresso, Latte, Cappuccino" },
-                { name: "Non Coffee", desc: "Tea, Chocolate, Smoothies" },
-                { name: "Best Seller", desc: "Rekomendasi spesial" },
+                { name: "Coffee Based", desc: "Adanya kandungan biji kopi" },
+                { name: "Non Coffee", desc: "Tanpa adanya kandungan biji kopi" },
+                { name: "Best Seller", desc: "Laris Manisssss" },
               ].map((item) => (
                 <li key={item.name}>
                   <p className="font-medium hover:text-amber-100 cursor-pointer transition-colors">
@@ -112,7 +112,7 @@ export default function Footer() {
                   <div>
                     <p className="font-medium">Alamat</p>
                     <p className="text-xs opacity-90">
-                      Jl. Sore Hari No. 10, Kota
+                      Tanjungpinang, Bintan Centre
                     </p>
                   </div>
                 </div>
@@ -164,7 +164,7 @@ export default function Footer() {
               </div>
             </button>
 
-            <div className="flex gap-2">
+            {/* <div className="flex gap-2">
               <button
                 onClick={openInstagram}
                 className="p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
@@ -179,7 +179,7 @@ export default function Footer() {
               >
                 <FaWhatsapp />
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

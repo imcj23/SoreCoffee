@@ -10,7 +10,6 @@ export default function AboutUs () {
         </div>
 
         <div className="flex flex-col lg:flex-row items-center gap-12">
-          {/* Gambar Owner */}
           <div className="lg:w-1/3">
             <div className="relative">
               <img 
@@ -19,18 +18,16 @@ export default function AboutUs () {
                 className="rounded-2xl shadow-2xl w-full max-w-md mx-auto"
               />
               <div className="absolute -bottom-4 -right-4 bg-amber-700 text-white p-4 rounded-xl shadow-lg">
-                <p className="font-bold text-lg">Ridwan Permadi</p>
+                <p className="font-bold text-lg">Bagus Permadi</p>
                 <p className="text-sm">Owner Sore Coffee</p>
               </div>
             </div>
             
-            {/* Quote Owner */}
             <div className="mt-10 p-6 bg-white rounded-xl shadow-lg border-l-4 border-amber-600">
               <p className="text-gray-700 italic text-lg">"Kopi bukan sekadar minuman, tapi cerita yang diseduh dengan ketulusan. Di Sore Coffee, kami menghadirkan pengalaman sore yang hangat untuk setiap pelanggan."</p>
             </div>
           </div>
 
-          {/* Konten Tentang */}
           <div className="lg:w-2/3">
             <h3 className="text-3xl font-bold text-amber-900 mb-6">Cerita Sore Coffee</h3>
             
@@ -73,10 +70,10 @@ export default function AboutUs () {
               </div>
               <div className="text-center">
                 <p className="text-4xl font-bold text-amber-700">7+</p>
-                <p className="text-gray-600 mt-2">Varietas Kopi</p>
+                <p className="text-gray-600 mt-2">Varietas Menu</p>
               </div>
               <div className="text-center">
-                <p className="text-4xl font-bold text-amber-700">1jt</p>
+                <p className="text-4xl font-bold text-amber-700">237K</p>
                 <p className="text-gray-600 mt-2">Pelanggan Setia</p>
               </div>
               <div className="text-center">
@@ -87,7 +84,6 @@ export default function AboutUs () {
           </div>
         </div>
 
-        {/* Gallery */}
         <div className="mt-16">
           <h3 className="text-3xl font-bold text-center text-amber-900 mb-8">Suasana Sore Coffee</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -112,7 +108,6 @@ export default function AboutUs () {
               </div>
             </div>
           </div>
-          {/* <p className="text-center text-gray-500 mt-4">*Gantilah placeholder ini dengan gambar aktual suasana kafe Anda</p> */}
         </div>
       </div>
     </section>
