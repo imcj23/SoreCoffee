@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { FaShoppingCart } from "react-icons/fa";
 import Logo from '../assets/photo/Logo_sore.png';
 import useCart from "../hooks/useCart";
-import CartSidebar from "../components/CartSideBar";
+import CartSidebar from "../components/CartSidebar";
 
 // Custom hook untuk status toko
 const useStoreStatus = () => {
