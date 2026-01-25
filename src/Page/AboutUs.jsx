@@ -20,7 +20,7 @@ import {
 import ownerImage from "../assets/photo/ownerbagus.png";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-// import halalCertImage from '../assets/halal-certificate.jpg';
+import halalCertImage from '../assets/photo/logo_halal.svg';
 // import coffeeProcessImage from '../assets/coffee-process.jpg';
 // import teamImage from '../assets/team.jpg';
 
@@ -29,7 +29,6 @@ const AboutUs = () => {
     <>
     <Navbar/>
       <div className="min-h-screen bg-gradient-to-b from-amber-50 to-white text-gray-800">
-        {/* Hero Section */}
         <section className="relative py-20 bg-gradient-to-r from-amber-900 to-amber-700 text-white">
           <div className="container mx-auto px-4 md:px-8 text-center">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
@@ -167,9 +166,9 @@ const AboutUs = () => {
               <div className="lg:w-2/5">
                 <div className="bg-white p-6 rounded-2xl shadow-xl">
                   <img
-                    //   src={halalCertImage}
+                      src={halalCertImage}
                     alt="Sertifikat Halal MUI Sore Coffee"
-                    className="rounded-xl w-full"
+                    className="rounded-xl w- h-100 flex mx-auto "
                   />
                 </div>
                 <div className="mt-6 text-center">
