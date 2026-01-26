@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import CartContext from '../context/CartContext';
+import CartContext from '../context/cartcontext';
 
 // Helper function untuk parse harga
 const parsePrice = (priceString) => {
