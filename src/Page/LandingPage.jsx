@@ -3,6 +3,7 @@ import Hero from "../components/Hero";
 import About from "../components/About";
 import Footer from "../components/Footer";
 import Location from "../components/Location";
+import TestimonialSection from "../components/Testimoni";
 // import InstagramSection from "../components/InstagramSection";
 
 export default function LandingPage() {
@@ -12,6 +13,7 @@ export default function LandingPage() {
       <Hero />
       <About />
       <Location />
+      <TestimonialSection />
       {/*<InstagramSection/> */}
       <Footer />
     </>

@@ -196,17 +196,11 @@ export default function Navbar() {
               </button>
             </div>
 
-            {/* Mobile Menu & Cart */}
+            {/* responsive*/}
             <div className="md:hidden flex items-center gap-4">
               <div className="text-right">
-                <div className="flex items-center justify-end gap-2">
-                  <span className={`inline-block w-2 h-2 rounded-full ${storeStatus.isOpen ? 'bg-green-400' : 'bg-red-500'}`}></span>
-                  <span className="text-sm font-medium">{storeStatus.isOpen ? 'Buka' : 'Tutup'}</span>
-                </div>
-                <div className="text-xs opacity-80">{storeStatus.hours.split(' - ')[0]}</div>
               </div>
               
-              {/* Cart Icon Mobile */}
               <button
                 onClick={openCart}
                 className="relative hover:text-amber-300 transition-colors"
@@ -248,17 +242,6 @@ export default function Navbar() {
 
         {isMenuOpen && (
           <div className="md:hidden bg-[#DC7331] px-4 pb-6 space-y-2">
-            <div className="pt-2 pb-3 border-b border-amber-500/30">
-              <div className="flex items-center gap-2 mb-1">
-                <span className={`inline-block w-2 h-2 rounded-full ${storeStatus.isOpen ? 'bg-green-400' : 'bg-red-500'}`}></span>
-                <span className="font-medium">{storeStatus.message}</span>
-              </div>
-              <div className="text-sm opacity-90">{storeStatus.hours}</div>
-              {!storeStatus.isOpen && storeStatus.nextOpen && (
-                <div className="text-sm mt-1">{storeStatus.nextOpen}</div>
-              )}
-            </div>
-            
             <Link 
               to="/" 
               className={`block py-2 px-3 rounded transition-colors duration-200 ${
@@ -324,29 +307,10 @@ export default function Navbar() {
               )}
             </button>
 
-            <Link
-              to="/catalog"
-              className={`w-full py-3 rounded-lg transition font-medium mt-4 flex items-center justify-center gap-2 ${
-                storeStatus.isOpen 
-                  ? 'bg-amber-600 hover:bg-amber-500' 
-                  : 'bg-gray-600 cursor-not-allowed opacity-80'
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {storeStatus.isOpen ? (
-                <>
-                  <FaShoppingCart />
-                  Order Now ({getCartCount()})
-                </>
-              ) : (
-                `Tutup - ${storeStatus.nextOpen}`
-              )}
-            </Link>
           </div>
         )}
       </nav>
 
-      {/* Cart Sidebar */}
       <CartSidebar isOpen={isCartOpen} onClose={closeCart} />
     </>
   );
