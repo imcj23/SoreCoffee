@@ -37,7 +37,6 @@ const BottomSheet = ({ menu, isOpen, onClose }) => {
       addToCart(menu, quantity);
       setIsAdding(false);
       
-      // Trigger notification
       const event = new CustomEvent('cart:added', { 
         detail: { menu: menu.name, quantity } 
       });
@@ -73,8 +72,17 @@ const BottomSheet = ({ menu, isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
-  // Calculate total price
-  const priceValue = parseInt(menu.price.replace('Rp ', '').replace('.', '')) || 0;
+  const parsePrice = (priceString) => {
+    if(!priceString) return 0
+    const cleanString = priceString.replace(/[^\d.,]/g, '');
+
+    const normalized = cleanString.replace(',', '.');
+    const withoutThousandSeparator = normalized.replace(/\./g, '');
+    
+    return parseFloat(withoutThousandSeparator) || 0;
+  }
+
+  const priceValue = parsePrice(menu.price);
   const totalPrice = priceValue * quantity;
 
   return (
@@ -202,7 +210,6 @@ const BottomSheet = ({ menu, isOpen, onClose }) => {
             </div>
           )}
 
-          {/* Quantity Counter */}
           <div className="mb-6">
             <h4 className="text-base md:text-lg font-bold text-gray-900 mb-3">
               Jumlah Pesanan
@@ -237,7 +244,6 @@ const BottomSheet = ({ menu, isOpen, onClose }) => {
             </div>
           </div>
 
-          {/* Action Buttons */}
           <div className="sticky md:static bottom-0 left-0 right-0 bg-white md:bg-transparent pt-4 md:pt-0 border-t md:border-none">
             <div className="flex flex-col sm:flex-row gap-3">
               <button

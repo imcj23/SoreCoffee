@@ -1,5 +1,31 @@
 import { useState } from 'react';
-import CartContext from './cartcontext';
+import CartContext from '../context/CartContext';
+
+// Helper function untuk parse harga
+const parsePrice = (priceString) => {
+  if (!priceString || typeof priceString !== 'string') return 0;
+  
+  const cleanString = priceString.replace(/[^\d.,]/g, '');
+  const hasCommaDecimal = cleanString.includes(',') && !cleanString.includes('.');
+  let normalized = cleanString;
+  
+  if (hasCommaDecimal) {
+    normalized = cleanString.replace(',', '.');
+  }
+  
+  const withoutThousandSeparator = normalized.replace(/\./g, '');
+  return parseFloat(withoutThousandSeparator) || 0;
+};
+
+// Helper function untuk format harga
+const formatPrice = (price) => {
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+  }).format(price).replace('Rp', 'Rp ');
+};
 
 const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
@@ -37,7 +63,7 @@ const CartProvider = ({ children }) => {
 
   const getCartTotal = () => {
     return cartItems.reduce((total, item) => {
-      const price = parseFloat(item.price.replace('Rp ', '').replace('.', '')) || 0;
+      const price = parsePrice(item.price);
       return total + (price * item.quantity);
     }, 0);
   };
@@ -50,12 +76,18 @@ const CartProvider = ({ children }) => {
     setCartItems([]);
   };
 
+  // Format total untuk display
+  const getFormattedCartTotal = () => {
+    return formatPrice(getCartTotal());
+  };
+
   const cartContextValue = {
     cartItems,
     addToCart,
     removeFromCart,
     updateQuantity,
     getCartTotal,
+    getFormattedCartTotal, // Export fungsi baru
     getCartCount,
     clearCart
   };

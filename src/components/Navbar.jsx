@@ -6,7 +6,6 @@ import Logo from '../assets/photo/Logo_sore.png';
 import useCart from "../hooks/useCart";
 import CartSidebar from "../components/CartSidebar";
 
-// Custom hook untuk status toko
 const useStoreStatus = () => {
   const [storeStatus, setStoreStatus] = useState({
     isOpen: false,
@@ -16,13 +15,11 @@ const useStoreStatus = () => {
   });
 
   useState(() => {
-    // Function untuk menghitung status
     const calculateStatus = () => {
       const now = new Date();
       const currentHour = now.getHours();
-      const currentDay = now.getDay(); // 0 = Minggu, 1 = Senin, dst
+      const currentDay = now.getDay();
       
-      // Jadwal buka toko - constant data
       const storeSchedule = {
         monday: { open: 8, close: 22 },
         tuesday: { open: 8, close: 22 },
@@ -33,7 +30,6 @@ const useStoreStatus = () => {
         sunday: { open: 8, close: 22 }
       };
       
-      // Ambil jadwal hari ini
       const scheduleKeys = Object.keys(storeSchedule);
       const todaySchedule = storeSchedule[scheduleKeys[currentDay === 0 ? 6 : currentDay - 1]];
       
@@ -48,7 +44,6 @@ const useStoreStatus = () => {
       
       const isOpenNow = currentHour >= todaySchedule.open && currentHour < todaySchedule.close;
       
-      // Hitung pesan untuk next open
       let nextMessage = "";
       if (!isOpenNow) {
         if (currentHour < todaySchedule.open) {
@@ -73,15 +68,12 @@ const useStoreStatus = () => {
       };
     };
 
-    // Set status awal
     const initialStatus = calculateStatus();
     setStoreStatus(initialStatus);
 
-    // Setup interval untuk update setiap menit
     const intervalId = setInterval(() => {
       const newStatus = calculateStatus();
       setStoreStatus(prev => {
-        // Hanya update jika ada perubahan
         if (
           prev.isOpen !== newStatus.isOpen ||
           prev.message !== newStatus.message ||
@@ -94,7 +86,6 @@ const useStoreStatus = () => {
       });
     }, 60000);
 
-    // Cleanup
     return () => clearInterval(intervalId);
   }, []);
 
@@ -114,7 +105,7 @@ export default function Navbar() {
 
   const openCart = () => {
     setIsCartOpen(true);
-    setIsMenuOpen(false); // Close mobile menu if open
+    setIsMenuOpen(false);
   };
 
   const closeCart = () => {
@@ -127,7 +118,6 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center h-20">
 
-            {/* Logo + Brand + Status */}
             <div className="flex items-center gap-3">
               <img
                 src={Logo}
@@ -256,7 +246,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu Dropdown */}
         {isMenuOpen && (
           <div className="md:hidden bg-[#DC7331] px-4 pb-6 space-y-2">
             <div className="pt-2 pb-3 border-b border-amber-500/30">
