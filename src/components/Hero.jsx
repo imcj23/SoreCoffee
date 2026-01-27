@@ -24,7 +24,6 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Image */}
           <div className="flex justify-center">
             <img
               src={Sore}
