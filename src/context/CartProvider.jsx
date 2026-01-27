@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import CartContext from './CartContext';
+import { useState } from "react";
+import { CartContext } from "./CartContext.jsx";
 
 const parsePrice = (priceString) => {
   if (!priceString || typeof priceString !== 'string') return 0;
