@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import CartContext from './CartContext';
 
-// Helper function untuk parse harga
 const parsePrice = (priceString) => {
   if (!priceString || typeof priceString !== 'string') return 0;
   
@@ -17,7 +16,6 @@ const parsePrice = (priceString) => {
   return parseFloat(withoutThousandSeparator) || 0;
 };
 
-// Helper function untuk format harga
 const formatPrice = (price) => {
   return new Intl.NumberFormat('id-ID', {
     style: 'currency',
@@ -76,7 +74,6 @@ const CartProvider = ({ children }) => {
     setCartItems([]);
   };
 
-  // Format total untuk display
   const getFormattedCartTotal = () => {
     return formatPrice(getCartTotal());
   };
@@ -87,7 +84,7 @@ const CartProvider = ({ children }) => {
     removeFromCart,
     updateQuantity,
     getCartTotal,
-    getFormattedCartTotal, // Export fungsi baru
+    getFormattedCartTotal, 
     getCartCount,
     clearCart
   };

@@ -4,7 +4,7 @@ export default function Hero() {
   
 
   return (
-    <section className="min-h-screen flex items-center bg-[#F5F1EE]">
+    <section className="min-h-screen flex items-center bg-amber-100">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div data-aos="fade-up">
