@@ -25,11 +25,11 @@ const Catalog = () => {
   };
 
   const filteredItems =
-    activeCategory === "all"
-      ? menus
-      : menus.filter((item) =>
-          item.category.toLowerCase().includes(activeCategory),
-        );
+  activeCategory === "all"
+    ? menus
+    : menus.filter((item) => 
+        item.category.toLowerCase() === activeCategory.toLowerCase()
+      );
 
   return (
     <>
@@ -106,13 +106,6 @@ const Catalog = () => {
                       {item.price}
                     </span>
                   </div>
-                  {/* {item.tags && item.tags.includes("Best Seller") && (
-                    <div className="absolute top-3 left-3">
-                      <span className="bg-red-500 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-bold">
-                        BESTSELLER
-                      </span>
-                    </div>
-                  )} */}
                 </div>
 
                 <div className="p-4 sm:p-6">

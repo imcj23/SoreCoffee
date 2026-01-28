@@ -1,16 +1,13 @@
-// src/components/LocationsSection.jsx
 import { useState, useEffect } from 'react';
 import { 
   FaMapMarkerAlt, 
   FaClock, 
-  FaPhone, 
   FaMotorcycle, 
   FaCoffee, 
   FaMap, 
   FaWhatsapp,
   FaTimes,
   FaChevronDown,
-  FaInfoCircle
 } from 'react-icons/fa';
 import { gerobakLocations, locationStats, generateGoogleMapsUrl, generateWhatsAppOrderUrl } from '../utils/location';
 
@@ -52,7 +49,7 @@ const LocationsSection = () => {
 
   return (
     <>
-      <section id="locations" className="py-16 bg-gradient-to-b from-white to-amber-50">
+      <section id="location-section" className="py-16 bg-gradient-to-b from-white to-amber-50">
         <div className="container mx-auto px-4 max-w-6xl">
           
           {/* Header */}
@@ -162,7 +159,6 @@ const LocationsSection = () => {
 
             {/* Right Column - Desktop View */}
             <div className="lg:w-3/5">
-              {/* Desktop View */}
               <div className="hidden lg:block">
                 <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
                   <div className="h-64 bg-gradient-to-r from-amber-900 to-amber-700 relative overflow-hidden">
@@ -176,7 +172,7 @@ const LocationsSection = () => {
                   </div>
 
                   {/* Outlet Details */}
-                  <div className="p-6 md:p-8">
+                  <div className="p-6 md:p-8 ">
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
                       <div>
                         <h3 className="text-2xl md:text-2xl font-bold text-gray-900 mb-2">
@@ -194,23 +190,6 @@ const LocationsSection = () => {
                           </span>
                         </div>
                       </div>
-                      
-                      <a
-                        href={generateGoogleMapsUrl(currentLocation.exactLocation)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-6 py-3 bg-amber-900 text-white rounded-xl hover:bg-amber-800 transition-colors font-bold whitespace-nowrap text-center inline-flex items-center gap-2"
-                      >
-                        <FaMap />
-                        Lihat di Maps
-                      </a>
-                    </div>
-
-                    {/* Description */}
-                    <div className="mb-6">
-                      <p className="text-gray-700 text-lg italic border-l-4 border-amber-500 pl-4 py-2">
-                        "{currentLocation.description}"
-                      </p>
                     </div>
 
                     {/* Contact & Hours */}

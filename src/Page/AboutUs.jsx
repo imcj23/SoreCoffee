@@ -10,21 +10,19 @@ import {
   FaStar,
   FaGlobeAmericas,
   FaBullseye,
-  FaCertificate,
   FaCheckCircle,
-  FaSeedling,
   FaFire,
-  FaMugHot,
   FaHandsHelping,
+  FaWhatsapp,
+  FaInstagram
 } from "react-icons/fa";
 import ownerImage from "../assets/photo/ownerbagus.png";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import halalCertImage from '../assets/photo/logo_halal.svg';
-// import coffeeProcessImage from '../assets/coffee-process.jpg';
-// import teamImage from '../assets/team.jpg';
 
-const AboutUs = () => {
+export default function AboutUs () {
+
   return (
     <>
     <Navbar/>
@@ -50,7 +48,7 @@ const AboutUs = () => {
             </div>
           </div>
         </section>
-
+  
         <div className="container mx-auto px-4 md:px-8 py-12">
           {/* Visi & Misi */}
           <section className="mb-20">
@@ -73,7 +71,7 @@ const AboutUs = () => {
                   </p>
                 </div>
               </div>
-
+  
               <div>
                 <h2 className="text-3xl font-bold text-amber-900 mb-6 flex items-center">
                   <FaBullseye className="mr-3" size={28} />
@@ -101,7 +99,7 @@ const AboutUs = () => {
               </div>
             </div>
           </section>
-
+  
           {/* Founder Story */}
           <section className="mb-20">
             <div className="flex flex-col lg:flex-row items-center gap-12">
@@ -109,17 +107,16 @@ const AboutUs = () => {
                 <div className="relative">
                   <img
                     src={ownerImage}
-                    alt="Ahmad Rizki - Founder Sore Coffee"
+                    alt="Bagus - Owner Sore Coffee"
                     className="rounded-3xl shadow-2xl w-full"
                   />
                   <div className="absolute -bottom-6 -right-6 bg-amber-800 text-white p-6 rounded-2xl shadow-xl">
-                    <p className="font-bold text-xl">Ahmad Rizki</p>
-                    <p className="text-amber-200">Founder & Head Barista</p>
-                    <p className="text-sm mt-2">Certified Q-Grader</p>
+                    <p className="font-bold text-xl">Bagus</p>
+                    <p className="text-amber-200">Owner Sore Coffee</p>
                   </div>
                 </div>
               </div>
-
+  
               <div className="lg:w-3/5">
                 <h2 className="text-3xl font-bold text-amber-900 mb-6">
                   Cerita Pendiri
@@ -127,7 +124,7 @@ const AboutUs = () => {
                 <div className="space-y-6 text-lg">
                   <p>
                     Berawal dari kecintaan terhadap kopi tradisional Indonesia,
-                    Ahmad memulai perjalanannya sebagai barista di tahun 2015.
+                    Bagus memulai perjalanannya sebagai barista di tahun 2015.
                     Setelah menempuh berbagai pelatihan dan sertifikasi barista
                     internasional, ia mendirikan Sore Coffee dengan satu tujuan:
                     menghadirkan kopi Indonesia yang otentik dengan standar
@@ -159,7 +156,7 @@ const AboutUs = () => {
               </div>
             </div>
           </section>
-
+  
           {/* Sertifikasi Halal */}
           <section className="mb-20 bg-gradient-to-r from-green-50 to-emerald-50 rounded-3xl p-8 md:p-12">
             <div className="flex flex-col lg:flex-row items-center gap-12">
@@ -182,7 +179,7 @@ const AboutUs = () => {
                   <p className="text-gray-600">Berlaku hingga: Seumur Hidup</p>
                 </div>
               </div>
-
+  
               <div className="lg:w-3/5">
                 <div className="flex items-center mb-6">
                   <div className="bg-green-600 text-white p-3 rounded-xl mr-4">
@@ -192,14 +189,14 @@ const AboutUs = () => {
                     Komitmen Kehalalan
                   </h2>
                 </div>
-
+  
                 <p className="text-lg mb-6">
                   Sore Coffee dengan bangga telah mendapatkan sertifikasi halal
                   resmi dari Majelis Ulama Indonesia (MUI). Komitmen kami
                   terhadap kehalalan bukan hanya sekadar sertifikat, tetapi
                   bagian integral dari nilai-nilai perusahaan.
                 </p>
-
+  
                 <div className="grid md:grid-cols-2 gap-6 mb-8">
                   {[
                     {
@@ -230,7 +227,7 @@ const AboutUs = () => {
                     </div>
                   ))}
                 </div>
-
+  
                 <div className="bg-green-100 border-l-4 border-green-600 p-5 rounded-r-xl">
                   <p className="text-green-800 font-medium">
                     "Kehalalan adalah hak dasar konsumen Muslim. Kami di Sore
@@ -244,8 +241,7 @@ const AboutUs = () => {
               </div>
             </div>
           </section>
-
-          {/* Proses Kopi */}
+  
           <section className="mb-20">
             <h2 className="text-3xl font-bold text-center text-amber-900 mb-12">
               Journey of Our Coffee
@@ -292,8 +288,8 @@ const AboutUs = () => {
               ))}
             </div>
           </section>
-
-          {/* Tim Kami */}
+  
+          {/* Tim Kami
           <section className="mb-20">
             <h2 className="text-3xl font-bold text-center text-amber-900 mb-12">
               Meet Our Team
@@ -344,9 +340,8 @@ const AboutUs = () => {
                 </div>
               ))}
             </div>
-          </section>
-
-          {/* Lokasi & Kontak */}
+          </section> */}
+  
           <section className="bg-gradient-to-br from-amber-900 to-amber-800 text-white rounded-3xl p-8 md:p-12">
             <h2 className="text-3xl font-bold text-center mb-12">
               Kunjungi Kami
@@ -359,37 +354,32 @@ const AboutUs = () => {
                 />
                 <h3 className="text-xl font-bold mb-4">Lokasi</h3>
                 <p className="text-amber-200">
-                  Jl. Kopi Sejahtera No. 123
+                  Jl. D.I. Panjaitan, Bintan Centre
                   <br />
-                  Jakarta Selatan
-                  <br />
-                  Buka: 07:00 - 22:00
+                  Tanjungpinang
                 </p>
               </div>
-
+  
               <div className="text-center">
                 <FaClock size={48} className="mx-auto mb-6 text-amber-300" />
                 <h3 className="text-xl font-bold mb-4">Jam Operasional</h3>
                 <div className="space-y-2 text-amber-200">
-                  <p>Senin - Jumat: 07:00 - 22:00</p>
-                  <p>Sabtu - Minggu: 08:00 - 23:00</p>
-                  <p className="text-amber-300 mt-4">*Drive-thru tersedia</p>
+                  <p>Setiap Hari : 08:00 - 22:00</p>
                 </div>
               </div>
-
+  
               <div className="text-center">
                 <FaUsers size={48} className="mx-auto mb-6 text-amber-300" />
                 <h3 className="text-xl font-bold mb-4">Hubungi Kami</h3>
                 <div className="space-y-2 text-amber-200">
-                  <p>📞 (021) 1234-5678</p>
-                  <p>📧 hello@sorecoffee.id</p>
-                  <p>📱 @sorecoffee.id</p>
+                  <p className="flex justify-center gap-2"><FaWhatsapp className="text-2xl"/> +62 852-2225-5234</p>
+                  <p className="flex justify-center gap-2"><FaInstagram className="text-2xl"/> @sorecoffee</p>
                 </div>
               </div>
             </div>
           </section>
-
-          {/* CTA */}
+  
+          {/* CTA
           <div className="text-center mt-16">
             <h3 className="text-2xl font-bold text-amber-900 mb-6">
               Tertarik Bergabung dengan Perjalanan Kami?
@@ -402,12 +392,10 @@ const AboutUs = () => {
                 Jadi Mitra Supplier
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <Footer/>
     </>
   );
-};
-
-export default AboutUs;
+}

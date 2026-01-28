@@ -65,7 +65,7 @@ export default function AboutUs () {
             {/* Stats */}
             <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="text-center">
-                <p className="text-4xl font-bold text-amber-700">1+</p>
+                <p className="text-4xl font-bold text-amber-700">2024</p>
                 <p className="text-gray-600 mt-2">Tahun Berdiri</p>
               </div>
               <div className="text-center">
@@ -84,7 +84,7 @@ export default function AboutUs () {
           </div>
         </div>
 
-        <div className="mt-16">
+        {/* <div className="mt-16">
           <h3 className="text-3xl font-bold text-center text-amber-900 mb-8">Suasana Sore Coffee</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="rounded-xl overflow-hidden shadow-md h-48">
@@ -108,7 +108,7 @@ export default function AboutUs () {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   )

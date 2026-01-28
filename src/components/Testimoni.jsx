@@ -1,72 +1,9 @@
 import React, { useState } from 'react';
 import { FaStar, FaQuoteLeft, FaChevronLeft, FaChevronRight, FaInstagram } from 'react-icons/fa';
+import { testimonials } from '../utils/testimoni'; // Import dari utils
 
 const TestimonialSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  // Data testimoni
-  const testimonials = [
-    {
-      id: 1,
-      name: 'Rina Wijaya',
-      role: 'Mahasiswa',
-      comment: 'Kopinya authentic banget! Suka banget sama Americano-nya, ga perlu antri lama dan harganya worth it. Jadi langganan setiap pulang kampus.',
-      rating: 5,
-      date: '2 hari lalu',
-      instagram: '@rinawjy',
-      photo: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
-    },
-    {
-      id: 2,
-      name: 'Budi Santoso',
-      role: 'Karyawan Kantoran',
-      comment: 'Tempat nongkrong favorit setelah kerja. Latte-nya creamy dan ga bikin eneg. Konsep gerobaknya unik dan instagrammable!',
-      rating: 4,
-      date: '1 minggu lalu',
-      instagram: '@budisant',
-      photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
-    },
-    {
-      id: 3,
-      name: 'Sari Dewi',
-      role: 'Content Creator',
-      comment: 'Selalu hunting foto di sini! Kopinya enak, tempatnya aesthetic, cocok buat konten. Pelayannya ramah dan cepat. Recommended!',
-      rating: 5,
-      date: '3 hari lalu',
-      instagram: '@saridewicreator',
-      photo: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
-    },
-    {
-      id: 4,
-      name: 'Agus Prabowo',
-      role: 'Wirausaha',
-      comment: 'Sebagai penikmat kopi, saya appreciate banget dengan kualitas biji kopi Sore Coffee. Roasting-nya pas, aroma khasnya terjaga.',
-      rating: 5,
-      date: '5 hari lalu',
-      instagram: '@agusprab',
-      photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
-    },
-    {
-      id: 5,
-      name: 'Maya Fitriani',
-      role: 'Freelancer',
-      comment: 'Nongki sambil kerja remote dari sini, Wi-Fi kenceng dan suasana nyaman. Matcha Latte-nya juara! Sudah rekomendasiin ke teman-teman.',
-      rating: 4,
-      date: '1 minggu lalu',
-      instagram: '@mayafitri',
-      photo: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
-    },
-    {
-      id: 6,
-      name: 'Dimas Arya',
-      role: 'Pelajar',
-      comment: 'Tempatnya cozy buat nugas atau sekadar nongkrong. Kopi susu gula arennya legendaris! Harga student-friendly.',
-      rating: 5,
-      date: '4 hari lalu',
-      instagram: '@dimasarya_',
-      photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
-    }
-  ];
 
   // Render bintang
   const renderStars = (rating) => {
@@ -101,15 +38,15 @@ const TestimonialSection = () => {
             Kata Mereka tentang Sore Coffee
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Lihat pengalaman nyata dari pelanggan setia kami yang sudah menikmati kopi gerobakan trendi ini
+            Lihat pengalaman nyata dari pelanggan setia yang sudah menikmati 7 varian spesial kopi gerobakan kami
           </p>
         </div>
 
         {/* Stats */}
         <div className="flex flex-wrap justify-center gap-6 mb-12">
           <div className="text-center">
-            <div className="text-3xl font-bold text-amber-700">500+</div>
-            <div className="text-gray-600">Cangkir Per Hari</div>
+            <div className="text-3xl font-bold text-amber-700">7</div>
+            <div className="text-gray-600">Varian Minuman</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-amber-700">4.8</div>
@@ -117,7 +54,7 @@ const TestimonialSection = () => {
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-amber-700">2K+</div>
-            <div className="text-gray-600">Ulasan di Instagram</div>
+            <div className="text-gray-600">Ulasan Instagram</div>
           </div>
         </div>
 
@@ -134,6 +71,7 @@ const TestimonialSection = () => {
                     src={testimonial.photo} 
                     alt={testimonial.name}
                     className="w-12 h-12 rounded-full object-cover"
+                    loading="lazy"
                   />
                 </div>
                 <div className="ml-4">
@@ -147,7 +85,6 @@ const TestimonialSection = () => {
                   <p className="text-gray-600 text-sm">{testimonial.role}</p>
                   <div className="flex items-center mt-1">
                     {renderStars(testimonial.rating)}
-                    <span className="text-gray-500 text-sm ml-2">{testimonial.date}</span>
                   </div>
                 </div>
               </div>
@@ -181,6 +118,7 @@ const TestimonialSection = () => {
                           src={testimonial.photo} 
                           alt={testimonial.name}
                           className="w-12 h-12 rounded-full object-cover"
+                          loading="lazy"
                         />
                       </div>
                       <div className="ml-4">
@@ -194,7 +132,6 @@ const TestimonialSection = () => {
                         <p className="text-gray-600 text-sm">{testimonial.role}</p>
                         <div className="flex items-center mt-1">
                           {renderStars(testimonial.rating)}
-                          <span className="text-gray-500 text-sm ml-2">{testimonial.date}</span>
                         </div>
                       </div>
                     </div>
@@ -236,8 +173,25 @@ const TestimonialSection = () => {
                 className={`w-3 h-3 rounded-full mx-1 transition-colors ${
                   index === currentIndex ? 'bg-amber-600' : 'bg-gray-300'
                 }`}
-                aria-label={`Go to testimonial ${index + 1}`}
+                aria-label={`Pergi ke testimonial ${index + 1}`}
               />
+            ))}
+          </div>
+        </div>
+
+        {/* Menu Highlights */}
+        <div className="mt-12 mb-8">
+          <h3 className="text-xl font-bold text-center text-amber-800 mb-6">
+            7 Varian Spesial yang Disukai Pelanggan
+          </h3>
+          <div className="flex flex-wrap justify-center gap-3">
+            {['Americano', 'Spanish Latte', 'Butterscotch', 'Aren Latte', 'Japanese Matcha', 'Chocolate', 'Pink Panther'].map((menu) => (
+              <span 
+                key={menu}
+                className="px-4 py-2 bg-amber-100 text-amber-800 rounded-full text-sm font-medium hover:bg-amber-200 transition-colors"
+              >
+                {menu}
+              </span>
             ))}
           </div>
         </div>
@@ -246,13 +200,13 @@ const TestimonialSection = () => {
         <div className="text-center mt-12">
           <p className="text-gray-700 mb-4">
             Bagikan pengalamanmu dengan tag 
-            <span className="font-bold text-amber-700"> #SoreCoffeeExperience</span>
+            <span className="font-bold text-amber-700 ml-1">#SoreCoffeeExperience</span>
           </p>
           <a 
             href="https://instagram.com/sorecoffee" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center bg-gradient-to-r from-amber-600 to-orange-500 text-white font-medium py-3 px-6 rounded-full hover:shadow-lg transition-all duration-300"
+            className="inline-flex items-center bg-gradient-to-r from-amber-600 to-orange-500 text-white font-medium py-3 px-6 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105"
           >
             <FaInstagram className="mr-2" />
             Lihat Semua Testimoni di Instagram
