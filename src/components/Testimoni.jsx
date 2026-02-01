@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { FaStar, FaQuoteLeft, FaChevronLeft, FaChevronRight, FaInstagram } from 'react-icons/fa';
-import { testimonials } from '../utils/testimoni'; // Import dari utils
+import { testimonials } from '../utils/testimoni';
 
-const TestimonialSection = () => {
+export default function Testimoni () {
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  // Render bintang
   const renderStars = (rating) => {
     return Array.from({ length: 5 }).map((_, index) => (
       <FaStar
@@ -16,7 +14,6 @@ const TestimonialSection = () => {
     ));
   };
 
-  // Navigasi slider
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => 
       prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
@@ -28,9 +25,9 @@ const TestimonialSection = () => {
       prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
     );
   };
-
   return (
-    <section className="py-16 px-4 md:px-8 lg:px-16 bg-gradient-to-b from-amber-50 to-white">
+    <>
+     <section className="py-16 px-4 md:px-8 lg:px-16 bg-gradient-to-b from-amber-50 to-white">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-12">
@@ -58,7 +55,6 @@ const TestimonialSection = () => {
           </div>
         </div>
 
-        {/* Desktop Grid View (3 kolom) */}
         <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {testimonials.map((testimonial) => (
             <div 
@@ -99,7 +95,6 @@ const TestimonialSection = () => {
           ))}
         </div>
 
-        {/* Mobile/Tablet Slider View */}
         <div className="lg:hidden relative">
           <div className="overflow-hidden">
             <div 
@@ -148,7 +143,6 @@ const TestimonialSection = () => {
             </div>
           </div>
 
-          {/* Navigation Buttons */}
           <button 
             onClick={prevSlide}
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 bg-white rounded-full p-3 shadow-lg hover:bg-amber-50 transition-colors"
@@ -164,7 +158,6 @@ const TestimonialSection = () => {
             <FaChevronRight className="text-amber-700" />
           </button>
 
-          {/* Slider Indicators */}
           <div className="flex justify-center mt-6">
             {testimonials.map((_, index) => (
               <button
@@ -179,7 +172,6 @@ const TestimonialSection = () => {
           </div>
         </div>
 
-        {/* Menu Highlights */}
         <div className="mt-12 mb-8">
           <h3 className="text-xl font-bold text-center text-amber-800 mb-6">
             7 Varian Spesial yang Disukai Pelanggan
@@ -196,7 +188,6 @@ const TestimonialSection = () => {
           </div>
         </div>
 
-        {/* Call to Action */}
         <div className="text-center mt-12">
           <p className="text-gray-700 mb-4">
             Bagikan pengalamanmu dengan tag 
@@ -209,12 +200,11 @@ const TestimonialSection = () => {
             className="inline-flex items-center bg-gradient-to-r from-amber-600 to-orange-500 text-white font-medium py-3 px-6 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105"
           >
             <FaInstagram className="mr-2" />
-            Lihat Semua Testimoni di Instagram
+            Follow kami di Instagram
           </a>
         </div>
       </div>
     </section>
-  );
-};
-
-export default TestimonialSection;
+    </>
+  )
+}

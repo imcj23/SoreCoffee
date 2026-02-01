@@ -1,4 +1,3 @@
-// src/components/CartSidebar.jsx
 import { useState, useEffect } from "react";
 import {
   FaTrash,
@@ -13,7 +12,6 @@ import {
 import { Link } from "react-router-dom";
 import useCart from "../hooks/useCart";
 
-// Helper function untuk parse harga
 const parsePrice = (priceString) => {
   if (!priceString || typeof priceString !== "string") return 0;
 
@@ -30,7 +28,6 @@ const parsePrice = (priceString) => {
   return parseFloat(withoutThousandSeparator) || 0;
 };
 
-// Helper function untuk format harga ke IDR
 const formatPrice = (price) => {
   return new Intl.NumberFormat("id-ID", {
     style: "currency",
@@ -42,7 +39,6 @@ const formatPrice = (price) => {
     .replace("Rp", "Rp ");
 };
 
-// Data outlet Sore Coffee
 const OUTLET_OPTIONS = [
   { id: 1, name: "Sore Coffee Bintan Centre", address: "-" },
   { id: 2, name: "Sore Coffee Batu 8", address: "-" },
@@ -75,17 +71,14 @@ const CartSidebar = ({ isOpen, onClose }) => {
     businessHours: "08:00 - 22:00",
   };
 
-  // Handle opening animation
   useEffect(() => {
     if (isOpen) {
       setIsVisible(true);
-      // Small delay to trigger animation
       setTimeout(() => {
         setIsAnimating(true);
       }, 10);
     } else {
       setIsAnimating(false);
-      // Wait for animation to complete before hiding
       setTimeout(() => {
         setIsVisible(false);
       }, 300);
@@ -100,7 +93,6 @@ const CartSidebar = ({ isOpen, onClose }) => {
     }, 300);
   };
 
-  // Get selected outlet data
   const getSelectedOutlet = () => {
     return (
       OUTLET_OPTIONS.find((outlet) => outlet.id === selectedOutlet) ||
@@ -108,11 +100,9 @@ const CartSidebar = ({ isOpen, onClose }) => {
     );
   };
 
-  // WhatsApp Checkout Function
   const handleWhatsAppCheckout = () => {
     if (cartItems.length === 0) return;
 
-    // Validasi form
     if (!customerName.trim()) {
       alert("Harap masukkan nama Anda terlebih dahulu!");
       setShowForm(true);
@@ -182,11 +172,9 @@ const CartSidebar = ({ isOpen, onClose }) => {
     }
   };
 
-  // Handle proceed to checkout
   const handleProceedToCheckout = () => {
     if (cartItems.length === 0) return;
 
-    // Toggle form visibility
     setShowForm(!showForm);
   };
 
@@ -201,7 +189,6 @@ const CartSidebar = ({ isOpen, onClose }) => {
       document.addEventListener("keydown", handleEscape);
       document.body.style.overflow = "hidden";
 
-      // Reset form jika cart kosong
       if (cartItems.length === 0) {
         setShowForm(false);
       }
@@ -223,7 +210,6 @@ const CartSidebar = ({ isOpen, onClose }) => {
 
   return (
     <>
-      {/* Overlay */}
       <div
         className={`fixed inset-0 z-50 bg-black transition-all duration-300 ease-in-out ${
           isAnimating ? "opacity-50" : "opacity-0"
@@ -231,7 +217,6 @@ const CartSidebar = ({ isOpen, onClose }) => {
         onClick={handleOverlayClick}
       />
 
-      {/* Sidebar Container */}
       <div
         className={`fixed top-0 right-0 h-full w-full sm:w-96 z-50 bg-white shadow-2xl transform transition-all duration-300 ease-in-out ${
           isAnimating
@@ -280,7 +265,6 @@ const CartSidebar = ({ isOpen, onClose }) => {
             </div>
           ) : (
             <>
-              {/* Cart Items */}
               <div className="flex-1 overflow-y-auto p-2">
                 <div className="space-y-4">
                   {cartItems.map((item) => {
@@ -364,7 +348,6 @@ const CartSidebar = ({ isOpen, onClose }) => {
                 </div>
               </div>
 
-              {/* Checkout Form */}
               {showForm && (
                 <div className="px-4 pt-2 animate-fadeIn">
                   <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-4">
@@ -440,10 +423,8 @@ const CartSidebar = ({ isOpen, onClose }) => {
                 </div>
               )}
 
-              {/* Footer with Total and Actions */}
               <div className="border-t border-gray-200 p-6 bg-white">
                 <div className="space-y-4">
-                  {/* Order Summary */}
                   <div className="space-y-2">
                     {cartItems.map((item) => {
                       const itemPrice = parsePrice(item.price);
@@ -464,7 +445,6 @@ const CartSidebar = ({ isOpen, onClose }) => {
                     })}
                   </div>
 
-                  {/* Total */}
                   <div className="border-t pt-4">
                     <div className="flex justify-between items-center mb-6">
                       <span className="text-lg font-bold text-gray-900">
@@ -475,9 +455,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                       </span>
                     </div>
 
-                    {/* Action Buttons */}
                     <div className="space-y-3">
-                      {/* Main Checkout Button */}
                       {!showForm ? (
                         <button
                           onClick={handleProceedToCheckout}
@@ -487,7 +465,6 @@ const CartSidebar = ({ isOpen, onClose }) => {
                         </button>
                       ) : (
                         <>
-                          {/* WhatsApp Checkout Button */}
                           <button
                             onClick={handleWhatsAppCheckout}
                             className="w-full py-3 bg-green-600 text-white rounded-xl font-bold hover:bg-green-700 active:scale-[0.98] transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
@@ -496,7 +473,6 @@ const CartSidebar = ({ isOpen, onClose }) => {
                             Kirim Pesanan ke WhatsApp
                           </button>
 
-                          {/* Back Button */}
                           <button
                             onClick={() => setShowForm(false)}
                             className="w-full py-3 border-2 border-amber-900 text-amber-900 rounded-xl hover:bg-amber-50 active:scale-[0.98] transition-all font-bold"
@@ -506,7 +482,6 @@ const CartSidebar = ({ isOpen, onClose }) => {
                         </>
                       )}
 
-                      {/* Secondary Buttons (hide when form is shown) */}
                       {!showForm && (
                         <>
                           <div className="grid grid-cols-2 gap-3">
@@ -526,7 +501,6 @@ const CartSidebar = ({ isOpen, onClose }) => {
                             </Link>
                           </div>
 
-                          {/* Additional Info */}
                           <div className="text-center text-xs text-gray-500 mt-4 pt-4 border-t border-gray-100">
                             <p>
                               Klik "Lanjutkan ke Checkout" untuk mengisi data
@@ -536,7 +510,6 @@ const CartSidebar = ({ isOpen, onClose }) => {
                         </>
                       )}
 
-                      {/* Form Instructions */}
                       {showForm && (
                         <div className="text-center text-xs text-gray-500 mt-2 animate-fadeIn">
                           <p>

@@ -94,7 +94,7 @@ export default function Hero() {
             <img
               src={Sore}
               alt="Sore Coffee"
-              className="w-full max-w-md rounded-3xl shadow-lg"
+              className="w-100 max-w-md rounded-3xl shadow-lg"
             />
           </div>
         </div>

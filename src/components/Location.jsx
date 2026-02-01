@@ -11,17 +11,16 @@ import {
 } from 'react-icons/fa';
 import { gerobakLocations, locationStats, generateGoogleMapsUrl, generateWhatsAppOrderUrl } from '../utils/location';
 
-const LocationsSection = () => {
+export default function LocationsSection () {
   const [activeOutlet, setActiveOutlet] = useState(0);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   
   const currentLocation = gerobakLocations.find(loc => loc.id === activeOutlet) || gerobakLocations[0];
 
-  // Check if mobile on mount and resize
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024); // lg breakpoint
+      setIsMobile(window.innerWidth < 1024);
     };
     
     checkMobile();
@@ -46,13 +45,11 @@ const LocationsSection = () => {
   const closeSheet = () => {
     setIsSheetOpen(false);
   };
-
   return (
     <>
-      <section id="location-section" className="py-16 bg-gradient-to-b from-white to-amber-50">
+    <section id="location-section" className="py-16 bg-amber-50">
         <div className="container mx-auto px-4 max-w-6xl">
           
-          {/* Header */}
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Titik <span className="text-amber-900">Gerobak</span> Kami
@@ -367,7 +364,5 @@ const LocationsSection = () => {
         </>
       )}
     </>
-  );
-};
-
-export default LocationsSection;
+  )
+}

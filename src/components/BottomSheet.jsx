@@ -1,11 +1,10 @@
-// src/components/BottomSheet.jsx
 import { useState, useEffect, useRef } from "react";
 import { FaStar, FaMinus, FaPlus } from "react-icons/fa";
 import { FaFireFlameCurved } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
 import useCart from "../hooks/useCart";
 
-const BottomSheet = ({ menu, isOpen, onClose }) => {
+export default function BottomSheet (menu, isOpen, onClose){
   const [isVisible, setIsVisible] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [quantity, setQuantity] = useState(1);
@@ -14,17 +13,14 @@ const BottomSheet = ({ menu, isOpen, onClose }) => {
 
   const { addToCart } = useCart();
 
-  // Handle opening and closing animations
   useEffect(() => {
     if (isOpen) {
       setIsVisible(true);
-      // Small delay to trigger animation
       setTimeout(() => {
         setIsAnimating(true);
       }, 10);
     } else {
       setIsAnimating(false);
-      // Wait for animation to complete before hiding
       setTimeout(() => {
         setIsVisible(false);
         setQuantity(1);
@@ -108,7 +104,6 @@ const BottomSheet = ({ menu, isOpen, onClose }) => {
 
   return (
     <>
-      {/* Overlay dengan animasi fade */}
       <div
         className={`fixed inset-0 z-40 transition-all duration-300 ${
           isAnimating
@@ -334,5 +329,3 @@ const BottomSheet = ({ menu, isOpen, onClose }) => {
     </>
   );
 };
-
-export default BottomSheet;

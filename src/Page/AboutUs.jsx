@@ -16,13 +16,12 @@ import {
   FaWhatsapp,
   FaInstagram
 } from "react-icons/fa";
-import ownerImage from "../assets/photo/ownerbagus.png";
+import ownerImage from "../assets/photo/Owner.jpeg";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import halalCertImage from '../assets/photo/logo_halal.svg';
 
 export default function AboutUs () {
-
   return (
     <>
     <Navbar/>
@@ -50,7 +49,6 @@ export default function AboutUs () {
         </section>
   
         <div className="container mx-auto px-4 md:px-8 py-12">
-          {/* Visi & Misi */}
           <section className="mb-20">
             <div className="grid md:grid-cols-2 gap-12">
               <div>
@@ -100,14 +98,13 @@ export default function AboutUs () {
             </div>
           </section>
   
-          {/* Founder Story */}
           <section className="mb-20">
             <div className="flex flex-col lg:flex-row items-center gap-12">
               <div className="lg:w-2/5">
                 <div className="relative">
                   <img
                     src={ownerImage}
-                    alt="Bagus - Owner Sore Coffee"
+                    alt="Owner Sore Coffee"
                     className="rounded-3xl shadow-2xl w-full"
                   />
                   <div className="absolute -bottom-6 -right-6 bg-amber-800 text-white p-6 rounded-2xl shadow-xl">
@@ -157,7 +154,6 @@ export default function AboutUs () {
             </div>
           </section>
   
-          {/* Sertifikasi Halal */}
           <section className="mb-20 bg-gradient-to-r from-green-50 to-emerald-50 rounded-3xl p-8 md:p-12">
             <div className="flex flex-col lg:flex-row items-center gap-12">
               <div className="lg:w-2/5">
@@ -378,21 +374,6 @@ export default function AboutUs () {
               </div>
             </div>
           </section>
-  
-          {/* CTA
-          <div className="text-center mt-16">
-            <h3 className="text-2xl font-bold text-amber-900 mb-6">
-              Tertarik Bergabung dengan Perjalanan Kami?
-            </h3>
-            <div className="flex flex-wrap justify-center gap-4">
-              <button className="bg-amber-700 hover:bg-amber-800 text-white px-8 py-3 rounded-full font-bold transition-colors">
-                Lihat Karir
-              </button>
-              <button className="bg-white border-2 border-amber-700 text-amber-700 hover:bg-amber-50 px-8 py-3 rounded-full font-bold transition-colors">
-                Jadi Mitra Supplier
-              </button>
-            </div>
-          </div> */}
         </div>
       </div>
       <Footer/>

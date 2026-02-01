@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 import BottomSheet from "../components/BottomSheet";
 import CartNotification from "../components/CartNotification";
 
-const Catalog = () => {
+export default function Catalog () {
   const [selectedMenu, setSelectedMenu] = useState(null);
   const [activeCategory, setActiveCategory] = useState("all");
   const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -30,10 +30,9 @@ const Catalog = () => {
     : menus.filter((item) => 
         item.category.toLowerCase() === activeCategory.toLowerCase()
       );
-
   return (
     <>
-      <Navbar />
+     <Navbar />
       <CartNotification />
       <section
         id="menu"
@@ -216,7 +215,5 @@ const Catalog = () => {
       </section>
       <Footer />
     </>
-  );
-};
-
-export default Catalog;
+  )
+}

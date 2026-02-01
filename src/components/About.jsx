@@ -1,4 +1,4 @@
-import ownerImage from '../assets/photo/aboutpict.png'; 
+import ownerImage from '../assets/photo/Sore.jpg.jpeg'; 
 
 export default function AboutUs () {
   return (
@@ -18,7 +18,7 @@ export default function AboutUs () {
                 className="rounded-2xl shadow-2xl w-full max-w-md mx-auto"
               />
               <div className="absolute -bottom-4 -right-4 bg-amber-700 text-white p-4 rounded-xl shadow-lg">
-                <p className="font-bold text-lg">Bagus Permadi</p>
+                <p className="font-bold text-lg">Bagus</p>
                 <p className="text-sm">Owner Sore Coffee</p>
               </div>
             </div>
@@ -41,10 +41,9 @@ export default function AboutUs () {
               </p>
             </div>
 
-            {/* Nilai-nilai */}
             <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
-                <div className="text-amber-700 text-3xl mb-4">🌱</div>
+                <div className="text-amber-700 text-3xl mb-4 justify-center">🌱</div>
                 <h4 className="text-xl font-bold text-amber-900 mb-2">Bahan Berkualitas</h4>
                 <p className="text-gray-600">Hanya menggunakan biji kopi pilihan dari petani lokal dengan standar kualitas tertinggi.</p>
               </div>

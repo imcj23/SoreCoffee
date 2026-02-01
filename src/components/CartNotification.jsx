@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const CartNotification = () => {
+export default function CartNotification (){
   const [notification, setNotification] = useState(null);
 
   useEffect(() => {
@@ -25,6 +25,7 @@ const CartNotification = () => {
   if (!notification || !notification.visible) return null;
 
   return (
+    <>
     <div className="fixed top-4 right-4 z-50 animate-fade-in-down">
       <div className="bg-green-500 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2">
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -33,7 +34,6 @@ const CartNotification = () => {
         <span>{notification.message}</span>
       </div>
     </div>
-  );
-};
-
-export default CartNotification;
+    </>
+  )
+}

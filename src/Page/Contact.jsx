@@ -26,7 +26,6 @@ export default function Contact() {
       <Navbar />
       <div className="min-h-screen flex items-center justify-center p-4">
         <div className="max-w-md w-full">
-          {/* Header */}
           <div className="text-center mb-10">
             <h1 className="text-4xl font-bold text-gray-800 mb-3">
               Hubungi Kami
@@ -36,9 +35,7 @@ export default function Contact() {
             </p>
           </div>
 
-          {/* Kontak Card */}
           <div className="bg-white rounded-2xl shadow-xl p-8">
-            {/* WhatsApp Section */}
             <div
               onClick={handleWhatsAppClick}
               className="flex items-center p-6 mb-6 bg-green-50 rounded-xl border border-green-200 hover:bg-green-100 hover:border-green-300 transition-all duration-300 cursor-pointer transform hover:-translate-y-1"
@@ -75,7 +72,6 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Instagram Section */}
             <div
               onClick={handleInstagramClick}
               className="flex items-center p-6 bg-gradient-to-r from-pink-50 to-purple-50 rounded-xl border border-pink-200 hover:border-pink-300 transition-all duration-300 cursor-pointer transform hover:-translate-y-1"
@@ -117,7 +113,6 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Footer */}
           <div className="text-center mt-8">
             <p className="text-gray-500 text-sm">
               Pilih salah satu kontak di atas untuk terhubung dengan kami
