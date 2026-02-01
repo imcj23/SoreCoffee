@@ -4,7 +4,7 @@ import { FaFireFlameCurved } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
 import useCart from "../hooks/useCart";
 
-export default function BottomSheet (menu, isOpen, onClose){
+export default function BottomSheet ({menu, isOpen, onClose}){
   const [isVisible, setIsVisible] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [quantity, setQuantity] = useState(1);
@@ -113,7 +113,6 @@ export default function BottomSheet (menu, isOpen, onClose){
         onClick={handleOverlayClick}
       />
 
-      {/* Bottom Sheet Container */}
       <div
         ref={sheetRef}
         className={`fixed z-50 bg-white shadow-2xl transform transition-all duration-300 ease-in-out max-h-[90vh] overflow-y-auto
