@@ -66,7 +66,6 @@ export default function LocationsSection () {
 
           <div className="flex flex-col lg:flex-row gap-8">
             
-            {/* Left Column - Outlet List */}
             <div className="lg:w-2/5">
               <div className="bg-white rounded-2xl shadow-lg p-6 lg:sticky lg:top-24">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
@@ -74,7 +73,7 @@ export default function LocationsSection () {
                   {locationStats.totalLocations} Titik Gerobak
                 </h3>
                 
-                <div className="space-y-3 mb-6 max-h-[400px] overflow-y-auto pr-2">
+                <div className="space-y-3 mb-6 max-h-96 overflow-y-auto pr-2">
                   {gerobakLocations.map((outlet) => (
                     <button
                       key={outlet.id}
@@ -86,7 +85,7 @@ export default function LocationsSection () {
                       }`}
                     >
                       <div className="flex items-start gap-3">
-                        <div className={`p-3 rounded-full flex-shrink-0 ${
+                        <div className={`p-3 rounded-full shrink-0 ${
                           activeOutlet === outlet.id 
                             ? 'bg-white/20' 
                             : 'bg-amber-100'
@@ -136,7 +135,6 @@ export default function LocationsSection () {
                   ))}
                 </div>
 
-                {/* Stats */}
                 <div className="grid grid-cols-3 gap-3 text-center pt-6 border-t border-gray-200">
                   <div>
                     <div className="text-2xl font-bold text-amber-900">{locationStats.totalLocations}</div>
@@ -154,11 +152,10 @@ export default function LocationsSection () {
               </div>
             </div>
 
-            {/* Right Column - Desktop View */}
             <div className="lg:w-3/5">
               <div className="hidden lg:block">
                 <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-                  <div className="h-64 bg-gradient-to-r from-amber-900 to-amber-700 relative overflow-hidden">
+                  <div className="h-64 bg-linear-to-r from-amber-900 to-amber-700 relative overflow-hidden">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-center text-white p-8">
                         <div className="text-4xl mb-4">📍</div>
@@ -168,7 +165,6 @@ export default function LocationsSection () {
                     </div>
                   </div>
 
-                  {/* Outlet Details */}
                   <div className="p-6 md:p-8 ">
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
                       <div>
@@ -189,11 +185,10 @@ export default function LocationsSection () {
                       </div>
                     </div>
 
-                    {/* Contact & Hours */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                       <div className="space-y-4">
                         <div className="flex items-start gap-3">
-                          <div className="p-2 bg-amber-100 rounded-lg flex-shrink-0">
+                          <div className="p-2 bg-amber-100 rounded-lg shrink-0">
                             <FaMapMarkerAlt className="text-amber-900" size={20} />
                           </div>
                           <div>
@@ -205,7 +200,7 @@ export default function LocationsSection () {
 
                       <div className="space-y-4">
                         <div className="flex items-start gap-3">
-                          <div className="p-2 bg-amber-100 rounded-lg flex-shrink-0">
+                          <div className="p-2 bg-amber-100 rounded-lg shrink-0">
                             <FaClock className="text-amber-900" size={20} />
                           </div>
                           <div>
@@ -217,7 +212,6 @@ export default function LocationsSection () {
                       </div>
                     </div>
 
-                    {/* Action Buttons */}
                     <div className="mt-8 pt-8 border-t border-gray-200">
                       <div className="flex flex-col sm:flex-row gap-4">
                         <a
@@ -276,7 +270,7 @@ export default function LocationsSection () {
             </div>
 
             <div className="px-6 pb-8">
-              <div className="h-48 bg-gradient-to-r from-amber-900 to-amber-700 rounded-2xl overflow-hidden mb-6 relative">
+              <div className="h-48 bg-linear-to-r from-amber-900 to-amber-700 rounded-2xl overflow-hidden mb-6 relative">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center text-white p-6">
                     <div className="text-4xl mb-4">📍</div>
@@ -306,17 +300,10 @@ export default function LocationsSection () {
                   </div>
                 </div>
 
-                <div className="mb-8">
-                  <h4 className="text-lg font-bold text-gray-900 mb-2">Deskripsi</h4>
-                  <p className="text-gray-700 italic border-l-4 border-amber-500 pl-4 py-2">
-                    "{currentLocation.description}"
-                  </p>
-                </div>
-
                 <div className="space-y-6 mb-8">
                   <div className="bg-amber-50 rounded-2xl p-4">
                     <div className="flex items-start gap-3 mb-3">
-                      <div className="p-2 bg-amber-100 rounded-lg flex-shrink-0">
+                      <div className="p-2 bg-amber-100 rounded-lg shrink-0">
                         <FaMapMarkerAlt className="text-amber-900" size={20} />
                       </div>
                       <div>
@@ -326,7 +313,7 @@ export default function LocationsSection () {
                     </div>
                     
                     <div className="flex items-start gap-3">
-                      <div className="p-2 bg-amber-100 rounded-lg flex-shrink-0">
+                      <div className="p-2 bg-amber-100 rounded-lg shrink-0">
                         <FaClock className="text-amber-900" size={20} />
                       </div>
                       <div>
@@ -352,7 +339,7 @@ export default function LocationsSection () {
                     href={generateWhatsAppOrderUrl(currentLocation.name)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full px-6 py-3 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-colors font-bold text-center flex items-center justify-center gap-2"
+                    className="w-full px-6 py-3 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-colors font-bold text-center flex items-center justify-center gap-2"
                   >
                     <FaWhatsapp />
                     Pesan via WhatsApp
