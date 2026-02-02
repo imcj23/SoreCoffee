@@ -14,17 +14,17 @@ import {
   FaFire,
   FaHandsHelping,
   FaWhatsapp,
-  FaInstagram
+  FaInstagram,
 } from "react-icons/fa";
 import ownerImage from "../assets/photo/Owner.jpeg";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import halalCertImage from '../assets/photo/logo_halal.svg';
+import halalCertImage from "../assets/photo/logo_halal.svg";
 
-export default function AboutUs () {
+export default function AboutUs() {
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <div className="min-h-screen bg-gradient-to-b from-amber-50 to-white text-gray-800">
         <section className="relative py-20 bg-gradient-to-r from-amber-900 to-amber-700 text-white">
           <div className="container mx-auto px-4 md:px-8 text-center">
@@ -47,7 +47,7 @@ export default function AboutUs () {
             </div>
           </div>
         </section>
-  
+
         <div className="container mx-auto px-4 md:px-8 py-12">
           <section className="mb-20">
             <div className="grid md:grid-cols-2 gap-12">
@@ -58,18 +58,17 @@ export default function AboutUs () {
                 </h2>
                 <div className="bg-white p-8 rounded-2xl shadow-lg border border-amber-100">
                   <p className="text-2xl font-semibold text-amber-800 mb-4">
-                    Menjadi kopi keliling terdepan dan terdekat yang menghadirkan pengalaman
-                    otentik kopi Indonesia dengan standar nasional dan
-                    nilai-nilai lokal.
+                    Menjadi usaha kopi keliling yang dekat dengan keseharian,
+                    menghadirkan kopi berkualitas sebagai teman menikmati momen
+                    dari pagi hingga malam.
                   </p>
                   <p className="text-gray-600">
-                    Kami berkomitmen untuk melestarikan warisan kopi Nusantara
-                    sambil menginovasi cara menikmatinya, menjadikan Sore Coffee
-                    sebagai tujuan pertama bagi pecinta kopi.
+                    Kami berkomitmen menyajikan kopi yang jujur, rasa yang
+                    konsisten, dan kehadiran yang bisa diandalkan
                   </p>
                 </div>
               </div>
-  
+
               <div>
                 <h2 className="text-3xl font-bold text-amber-900 mb-6 flex items-center">
                   <FaBullseye className="mr-3" size={28} />
@@ -77,11 +76,11 @@ export default function AboutUs () {
                 </h2>
                 <div className="space-y-4">
                   {[
-                    "Menyajikan kopi berkualitas premium dengan proses yang transparan dari biji hingga cangkir",
-                    "Mendukung petani kopi lokal melalui kemitraan yang berkelanjutan dan adil",
+                    "Menyajikan kopi yang enak, jujur, dan mudah dijangkau untuk semua kalangan",
+                    "Menghadirkan pengalaman minum kopi yang santai dan hangat di setiap perjalanan",
                     "Menjadi tempat yang inklusif dan nyaman untuk semua kalangan",
-                    "Mengedukasi masyarakat tentang seni dan budaya kopi Indonesia",
-                    "Menjaga kehalalan dan keamanan pangan dalam setiap produk kami",
+                    "Menjadi bagian dari rutinitas dan cerita pelanggan, di mana pun Sorecoffee berhenti",
+                    "Terus berkembang tanpa kehilangan kesederhanaan dan rasa khas Sorecoffee",
                   ].map((mission, index) => (
                     <div
                       key={index}
@@ -97,7 +96,7 @@ export default function AboutUs () {
               </div>
             </div>
           </section>
-  
+
           <section className="mb-20">
             <div className="flex flex-col lg:flex-row items-center gap-12">
               <div className="lg:w-2/5">
@@ -113,25 +112,26 @@ export default function AboutUs () {
                   </div>
                 </div>
               </div>
-  
+
               <div className="lg:w-3/5">
                 <h2 className="text-3xl font-bold text-amber-900 mb-6">
                   Cerita Pendiri
                 </h2>
                 <div className="space-y-6 text-lg">
                   <p>
-                    Berawal dari kecintaan terhadap kopi tradisional Indonesia,
-                    Bagus memulai perjalanannya sebagai barista di tahun 2015.
-                    Setelah menempuh berbagai pelatihan dan sertifikasi barista
-                    internasional, ia mendirikan Sore Coffee dengan satu tujuan:
-                    menghadirkan kopi Indonesia yang otentik dengan standar
-                    modern.
+                    Sorecoffee lahir dari kecintaan pada kopi dan perjalanan.
+                    Berawal dari satu gerobak kopi keliling, kami mulai menyapa
+                    pelanggan sejak pagi hari—saat hari baru dimulai—hingga
+                    malam, ketika kota mulai melambat. Meski namanya sorecoffee,
+                    bagi kami “sore” bukan cuma soal waktu, tapi soal rasa:
+                    jeda, santai, dan menikmati momen. Dengan kopi yang jujur
+                    dan mudah dijangkau, Sorecoffee hadir menemani aktivitas
+                    dari pagi sampai malam, di mana pun roda kami berhenti.
                   </p>
                   <p>
-                    "Saya percaya setiap biji kopi memiliki ceritanya sendiri.
-                    Dari tanah tempatnya tumbuh, tangan petani yang merawatnya,
-                    hingga proses roasting yang tepat. Di Sore Coffee, kami
-                    ingin cerita-cerita ini bisa dinikmati oleh semua orang."
+                    "Berkeliling dari pagi sampai malam ngajarin kami satu hal:
+                    setiap tempat punya cerita, dan kopi selalu jadi
+                    pembukanya."
                   </p>
                   <div className="flex flex-wrap gap-4 mt-8">
                     {[
@@ -153,13 +153,13 @@ export default function AboutUs () {
               </div>
             </div>
           </section>
-  
+
           <section className="mb-20 bg-gradient-to-r from-green-50 to-emerald-50 rounded-3xl p-8 md:p-12">
             <div className="flex flex-col lg:flex-row items-center gap-12">
               <div className="lg:w-2/5">
                 <div className="bg-white p-6 rounded-2xl shadow-xl">
                   <img
-                      src={halalCertImage}
+                    src={halalCertImage}
                     alt="Sertifikat Halal MUI Sore Coffee"
                     className="rounded-xl w- h-100 flex mx-auto "
                   />
@@ -175,7 +175,7 @@ export default function AboutUs () {
                   <p className="text-gray-600">Berlaku hingga: Seumur Hidup</p>
                 </div>
               </div>
-  
+
               <div className="lg:w-3/5">
                 <div className="flex items-center mb-6">
                   <div className="bg-green-600 text-white p-3 rounded-xl mr-4">
@@ -185,14 +185,14 @@ export default function AboutUs () {
                     Komitmen Kehalalan
                   </h2>
                 </div>
-  
+
                 <p className="text-lg mb-6">
                   Sore Coffee dengan bangga telah mendapatkan sertifikasi halal
                   resmi dari Majelis Ulama Indonesia (MUI). Komitmen kami
                   terhadap kehalalan bukan hanya sekadar sertifikat, tetapi
                   bagian integral dari nilai-nilai perusahaan.
                 </p>
-  
+
                 <div className="grid md:grid-cols-2 gap-6 mb-8">
                   {[
                     {
@@ -223,7 +223,7 @@ export default function AboutUs () {
                     </div>
                   ))}
                 </div>
-  
+
                 <div className="bg-green-100 border-l-4 border-green-600 p-5 rounded-r-xl">
                   <p className="text-green-800 font-medium">
                     "Kehalalan adalah hak dasar konsumen Muslim. Kami di Sore
@@ -237,7 +237,7 @@ export default function AboutUs () {
               </div>
             </div>
           </section>
-  
+
           <section className="mb-20">
             <h2 className="text-3xl font-bold text-center text-amber-900 mb-12">
               Journey of Our Coffee
@@ -246,26 +246,26 @@ export default function AboutUs () {
               {[
                 {
                   step: "1",
-                  title: "Sustainable Sourcing",
-                  desc: "Memilih biji kopi terbaik dari perkebunan terpilih di Sumatra, Java, Bali, dan Sulawesi",
+                  title: "Biji Kopi Pilihan",
+                  desc: "Kami memilih biji kopi berkualitas dari petani dan roastery lokal untuk menjaga cita rasa khas Sorecoffee.",
                   icon: <FaLeaf size={32} />,
                 },
                 {
                   step: "2",
-                  title: "Artisan Roasting",
-                  desc: "Proses roasting dengan teknik tradisional dan teknologi modern untuk aroma optimal",
+                  title: "Proses Pracikan",
+                  desc: "Setiap biji kopi diracik dengan proses sederhana dan penuh perhatian agar rasa tetap konsisten di setiap sajian.",
                   icon: <FaFire size={32} />,
                 },
                 {
                   step: "3",
-                  title: "Quality Control",
-                  desc: "Uji cita rasa oleh Q-Grader bersertifikat dan pengecekan kehalalan",
+                  title: "Kontrol Kualitas",
+                  desc: "Setiap racikan diperiksa untuk memastikan kualitas, kebersihan, dan rasa sebelum disajikan kepada pelanggan.",
                   icon: <FaCheckCircle size={32} />,
                 },
                 {
                   step: "4",
-                  title: "Perfect Brewing",
-                  desc: "Disajikan oleh barista profesional dengan teknik terbaik untuk pengalaman sempurna",
+                  title: "Diseduh Segar",
+                  desc: "Kopi diseduh langsung di gerobak Sorecoffee dan disajikan hangat—menemani momen Anda dari pagi hingga malam.",
                   icon: <FaHeart size={32} />,
                 },
               ].map((item, index) => (
@@ -284,7 +284,7 @@ export default function AboutUs () {
               ))}
             </div>
           </section>
-  
+
           {/* Tim Kami
           <section className="mb-20">
             <h2 className="text-3xl font-bold text-center text-amber-900 mb-12">
@@ -337,7 +337,7 @@ export default function AboutUs () {
               ))}
             </div>
           </section> */}
-  
+
           <section className="bg-gradient-to-br from-amber-900 to-amber-800 text-white rounded-3xl p-8 md:p-12">
             <h2 className="text-3xl font-bold text-center mb-12">
               Kunjungi Kami
@@ -355,7 +355,7 @@ export default function AboutUs () {
                   Tanjungpinang
                 </p>
               </div>
-  
+
               <div className="text-center">
                 <FaClock size={48} className="mx-auto mb-6 text-amber-300" />
                 <h3 className="text-xl font-bold mb-4">Jam Operasional</h3>
@@ -363,20 +363,24 @@ export default function AboutUs () {
                   <p>Setiap Hari : 08:00 - 22:00</p>
                 </div>
               </div>
-  
+
               <div className="text-center">
                 <FaUsers size={48} className="mx-auto mb-6 text-amber-300" />
                 <h3 className="text-xl font-bold mb-4">Hubungi Kami</h3>
                 <div className="space-y-2 text-amber-200">
-                  <p className="flex justify-center gap-2"><FaWhatsapp className="text-2xl"/> +62 852-2225-5234</p>
-                  <p className="flex justify-center gap-2"><FaInstagram className="text-2xl"/> @sorecoffee</p>
+                  <p className="flex justify-center gap-2">
+                    <FaWhatsapp className="text-2xl" /> +62 852-2225-5234
+                  </p>
+                  <p className="flex justify-center gap-2">
+                    <FaInstagram className="text-2xl" /> @sorecoffee
+                  </p>
                 </div>
               </div>
             </div>
           </section>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

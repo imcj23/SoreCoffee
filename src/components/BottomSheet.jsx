@@ -148,7 +148,7 @@ export default function BottomSheet ({menu, isOpen, onClose}){
               <img
                 src={menu.image}
                 alt={menu.name}
-                className="w-full h-full object-cover"
+                className="w-100 h-100 mx-auto object-cover"
               />
             </div>
             <div className="absolute top-3 left-3">

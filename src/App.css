@@ -21,9 +21,9 @@
 * {
   font-family: "Montserrat", sans-serif;
 }
-body {
-  background-color: var(--primary-color);
-}
+  /* body {
+    background-color: var(--primary-color);
+  } */
 
 .navbar-tag {
   display: flex;
