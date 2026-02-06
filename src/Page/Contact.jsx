@@ -20,7 +20,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 export default function Contact() {
-  const whatsappNumber = "+6282268853638";
+  const whatsappNumber = "+6285222255234";
   const instagramUsername = "@sorecoffee";
   const tiktokUsername = "@sorecoffee";
 
