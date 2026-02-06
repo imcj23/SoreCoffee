@@ -4,7 +4,7 @@ import { FaFireFlameCurved } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
 import useCart from "../hooks/useCart";
 
-export default function BottomSheet ({menu, isOpen, onClose}){
+export default function BottomSheet({ menu, isOpen, onClose }) {
   const [isVisible, setIsVisible] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [quantity, setQuantity] = useState(1);
@@ -15,13 +15,13 @@ export default function BottomSheet ({menu, isOpen, onClose}){
 
   useEffect(() => {
     if (isOpen) {
-      setIsVisible(true);
       setTimeout(() => {
+        setIsVisible(true);
         setIsAnimating(true);
       }, 10);
     } else {
-      setIsAnimating(false);
       setTimeout(() => {
+        setIsAnimating(false);
         setIsVisible(false);
         setQuantity(1);
       }, 300);
@@ -144,7 +144,7 @@ export default function BottomSheet ({menu, isOpen, onClose}){
         <div className="px-4 md:px-6 pb-6 md:pb-8">
           {/* Image Section */}
           <div className="relative mb-6 rounded-2xl overflow-hidden">
-            <div className="aspect-[4/3] md:aspect-video w-full">
+            <div className="aspect-4/3 md:aspect-video w-full">
               <img
                 src={menu.image}
                 alt={menu.name}
@@ -327,4 +327,4 @@ export default function BottomSheet ({menu, isOpen, onClose}){
       </div>
     </>
   );
-};
+}

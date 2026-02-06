@@ -21,7 +21,7 @@
 * {
   font-family: "Montserrat", sans-serif;
 }
-  /* body {
+/* body {
     background-color: var(--primary-color);
   } */
 
@@ -179,4 +179,94 @@
   transition:
     opacity 300ms,
     transform 300ms;
+}
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+}
+
+/* Responsive breakpoints tambahan */
+@media (max-width: 475px) {
+  .xs\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  
+  .xs\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  
+  .xs\:max-w-sm {
+    max-width: 24rem;
+  }
+  
+  .xs\:flex-row {
+    flex-direction: row;
+  }
+}
+
+/* Untuk perangkat sangat kecil */
+@media (max-width: 320px) {
+  .text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  
+  .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .min-h-screen {
+    min-height: 80vh;
+  }
+  
+  .grid-cols-1 {
+    grid-template-columns: 1fr;
+  }
+  
+  .order-1 {
+    order: 1;
+  }
+  
+  .order-2 {
+    order: 2;
+  }
+}
+
+@media (min-width: 1400px) {
+  .max-w-7xl {
+    max-width: 80rem;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .hover\:scale-105:hover {
+    transform: scale(1);
+  }
 }

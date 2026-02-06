@@ -39,7 +39,7 @@ export default function Catalog() {
     <>
       <Navbar />
       <CartNotification />
-      <div className="relative overflow-hidden bg-gradient-to-br from-amber-900 via-amber-800 to-amber-950 text-white">
+      <div className="relative overflow-hidden bg-linear-to-br from-amber-900 via-amber-800 to-amber-950 text-white">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-72 h-72 bg-white rounded-full"></div>
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full"></div>
@@ -77,15 +77,15 @@ export default function Catalog() {
         </div>
       </div>
 
-      <section className="py-8 md:py-12 bg-gradient-to-b from-white to-amber-50/30 min-h-screen">
+      <section className="py-8 md:py-12 bg-linear-to-b from-white to-amber-50/30 min-h-screen">
         <div className="container mx-auto px-3 md:px-4 max-w-7xl">
-          <div className="sticky top-16 md:top-20 z-40 bg-white/90 backdrop-blur-sm rounded-xl md:rounded-2xl shadow-md md:shadow-lg p-1.5 md:p-2 mb-6 md:mb-10 border border-amber-100">
+          <div className="sticky top-20 md:top-20 z-30 bg-white/90 backdrop-blur-sm rounded-xl md:rounded-2xl shadow-md md:shadow-lg p-1.5 md:p-2 mb-6 md:mb-10 border border-amber-100">
             <div className="flex flex-wrap justify-center gap-1.5 md:gap-2">
               <button
                 onClick={() => setActiveCategory("all")}
                 className={`px-3 md:px-5 py-2 md:py-3 rounded-lg md:rounded-xl text-xs md:text-sm font-medium md:font-semibold transition-all duration-300 flex items-center gap-1.5 md:gap-2 ${
                   activeCategory === "all"
-                    ? "bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-md md:shadow-lg shadow-amber-200"
+                    ? "bg-linear-to-r from-amber-600 to-orange-600 text-white shadow-md md:shadow-lg shadow-amber-200"
                     : "text-gray-700 hover:bg-amber-50 hover:text-amber-900"
                 }`}
               >
@@ -97,7 +97,7 @@ export default function Catalog() {
                 onClick={() => setActiveCategory("coffee")}
                 className={`px-3 md:px-5 py-2 md:py-3 rounded-lg md:rounded-xl text-xs md:text-sm font-medium md:font-semibold transition-all duration-300 flex items-center gap-1.5 md:gap-2 ${
                   activeCategory === "coffee"
-                    ? "bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-md md:shadow-lg shadow-amber-200"
+                    ? "bg-linear-to-r from-amber-600 to-orange-600 text-white shadow-md md:shadow-lg shadow-amber-200"
                     : "text-gray-700 hover:bg-amber-50 hover:text-amber-900"
                 }`}
               >
@@ -111,7 +111,7 @@ export default function Catalog() {
                 onClick={() => setActiveCategory("non-coffee")}
                 className={`px-3 md:px-5 py-2 md:py-3 rounded-lg md:rounded-xl text-xs md:text-sm font-medium md:font-semibold transition-all duration-300 flex items-center gap-1.5 md:gap-2 ${
                   activeCategory === "non-coffee"
-                    ? "bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-md md:shadow-lg shadow-amber-200"
+                    ? "bg-linear-to-r from-amber-600 to-orange-600 text-white shadow-md md:shadow-lg shadow-amber-200"
                     : "text-gray-700 hover:bg-amber-50 hover:text-amber-900"
                 }`}
               >
@@ -131,8 +131,8 @@ export default function Catalog() {
                 key={item.id}
                 className="group relative bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-lg hover:shadow-xl md:hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 md:hover:-translate-y-2 border border-amber-100"
               >
-                <div className="relative h-40 md:h-56 overflow-hidden bg-gradient-to-br from-amber-50 to-orange-50">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent z-10"></div>
+                <div className="relative h-40 md:h-56 overflow-hidden bg-linear-to-br from-amber-50 to-orange-50">
+                  <div className="absolute inset-0 bg-linear-to-t from-black/10 to-transparent z-10"></div>
                   <img
                     src={item.image}
                     alt={item.name}
@@ -191,7 +191,7 @@ export default function Catalog() {
                       {item.tags.slice(0, 2).map((tag, index) => (
                         <span
                           key={index}
-                          className="px-2 md:px-3 py-0.5 md:py-1 bg-gradient-to-r from-amber-50 to-orange-50 text-amber-800 rounded text-xs md:text-xs font-medium border border-amber-200"
+                          className="px-2 md:px-3 py-0.5 md:py-1 bg-linear-to-r from-amber-50 to-orange-50 text-amber-800 rounded text-xs md:text-xs font-medium border border-amber-200"
                         >
                           {tag}
                         </span>
@@ -209,7 +209,7 @@ export default function Catalog() {
                     
                     <button
                       onClick={() => openSheet(item)}
-                      className="group relative px-3 md:px-5 py-1.5 md:py-2.5 bg-gradient-to-r from-amber-600 to-orange-600 text-white font-medium md:font-semibold rounded-full transition-all duration-300 hover:shadow-md md:hover:shadow-lg hover:shadow-amber-200 hover:-translate-y-0.5 overflow-hidden"
+                      className="group relative px-3 md:px-5 py-1.5 md:py-2.5 bg-linear-to-r from-amber-600 to-orange-600 text-white font-medium md:font-semibold rounded-full transition-all duration-300 hover:shadow-md md:hover:shadow-lg hover:shadow-amber-200 hover:-translate-y-0.5 overflow-hidden"
                     >
                       <span className="relative z-10 flex items-center gap-1 md:gap-2 text-xs md:text-sm">
                         Detail
@@ -217,7 +217,7 @@ export default function Catalog() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
                       </span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-amber-700 to-orange-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute inset-0 bg-linear-to-r from-amber-700 to-orange-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </button>
                   </div>
                 </div>
@@ -243,7 +243,7 @@ export default function Catalog() {
               
               <button
                 onClick={() => setActiveCategory("all")}
-                className="px-6 md:px-8 py-2.5 md:py-3 bg-gradient-to-r from-amber-600 to-orange-600 text-white font-bold rounded-full hover:shadow-lg hover:shadow-amber-200 transition-all duration-300 transform hover:-translate-y-1 text-sm md:text-base"
+                className="px-6 md:px-8 py-2.5 md:py-3 bg-linear-to-r from-amber-600 to-orange-600 text-white font-bold rounded-full hover:shadow-lg hover:shadow-amber-200 transition-all duration-300 transform hover:-translate-y-1 text-sm md:text-base"
               >
                 Lihat Semua Menu
               </button>
@@ -263,8 +263,8 @@ export default function Catalog() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
-              <div className="bg-gradient-to-br from-white to-amber-50 p-4 md:p-8 rounded-2xl md:rounded-3xl border border-amber-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="bg-gradient-to-r from-amber-500 to-orange-500 w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 mx-auto md:mx-0">
+              <div className="bg-linear-to-br from-white to-amber-50 p-4 md:p-8 rounded-2xl md:rounded-3xl border border-amber-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="bg-linear-to-r from-amber-500 to-orange-500 w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 mx-auto md:mx-0">
                   <FaCoffee className="text-white text-xl md:text-2xl" />
                 </div>
                 <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3 text-center md:text-left">Biji Kopi Pilihan</h3>
@@ -273,8 +273,8 @@ export default function Catalog() {
                 </p>
               </div>
 
-              <div className="bg-gradient-to-br from-white to-amber-50 p-4 md:p-8 rounded-2xl md:rounded-3xl border border-amber-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="bg-gradient-to-r from-green-500 to-emerald-500 w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 mx-auto md:mx-0">
+              <div className="bg-linear-to-br from-white to-amber-50 p-4 md:p-8 rounded-2xl md:rounded-3xl border border-amber-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="bg-linear-to-r from-green-500 to-emerald-500 w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 mx-auto md:mx-0">
                   <FaLeaf className="text-white text-xl md:text-2xl" />
                 </div>
                 <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3 text-center md:text-left">Bahan Alami</h3>
@@ -283,8 +283,8 @@ export default function Catalog() {
                 </p>
               </div>
 
-              <div className="bg-gradient-to-br from-white to-amber-50 p-4 md:p-8 rounded-2xl md:rounded-3xl border border-amber-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="bg-gradient-to-r from-purple-500 to-pink-500 w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 mx-auto md:mx-0">
+              <div className="bg-linear-to-br from-white to-amber-50 p-4 md:p-8 rounded-2xl md:rounded-3xl border border-amber-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="bg-linear-to-r from-purple-500 to-pink-500 w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 mx-auto md:mx-0">
                   <FaTag className="text-white text-xl md:text-2xl" />
                 </div>
                 <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3 text-center md:text-left">Harga Terjangkau</h3>

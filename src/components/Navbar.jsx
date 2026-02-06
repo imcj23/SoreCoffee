@@ -1,76 +1,67 @@
-// src/components/Navbar.jsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from 'react-router-dom';
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaTimes } from "react-icons/fa";
 import Logo from '../assets/photo/Logo_sore.png';
 import useCart from "../hooks/useCart";
 import CartSidebar from "../components/CartSidebar";
 
 const useStoreStatus = () => {
-  const [storeStatus, setStoreStatus] = useState({
-    isOpen: false,
-    message: "Loading...",
-    nextOpen: "",
-    hours: "8:00 - 22:00"
-  });
-
-  useState(() => {
-    const calculateStatus = () => {
-      const now = new Date();
-      const currentHour = now.getHours();
-      const currentDay = now.getDay();
-      
-      const storeSchedule = {
-        monday: { open: 8, close: 22 },
-        tuesday: { open: 8, close: 22 },
-        wednesday: { open: 8, close: 22 },
-        thursday: { open: 8, close: 22 },
-        friday: { open: 8, close: 22 },
-        saturday: { open: 8, close: 22 },
-        sunday: { open: 8, close: 22 }
+  const calculateStatus = () => {
+    const now = new Date();
+    const currentHour = now.getHours();
+    const currentDay = now.getDay();
+    
+    const storeSchedule = {
+      monday: { open: 8, close: 22 },
+      tuesday: { open: 8, close: 22 },
+      wednesday: { open: 8, close: 22 },
+      thursday: { open: 8, close: 22 },
+      friday: { open: 8, close: 22 },
+      saturday: { open: 8, close: 22 },
+      sunday: { open: 8, close: 22 }
+    };
+    
+    const scheduleKeys = Object.keys(storeSchedule);
+    const todaySchedule = storeSchedule[scheduleKeys[currentDay === 0 ? 6 : currentDay - 1]];
+    
+    if (!todaySchedule) {
+      return {
+        isOpen: false,
+        message: "Tutup",
+        nextOpen: "Cek jadwal operasional",
+        hours: "8:00 - 22:00"
       };
-      
-      const scheduleKeys = Object.keys(storeSchedule);
-      const todaySchedule = storeSchedule[scheduleKeys[currentDay === 0 ? 6 : currentDay - 1]];
-      
-      if (!todaySchedule) {
-        return {
-          isOpen: false,
-          message: "Tutup",
-          nextOpen: "Cek jadwal operasional",
-          hours: "8:00 - 22:00"
-        };
-      }
-      
-      const isOpenNow = currentHour >= todaySchedule.open && currentHour < todaySchedule.close;
-      
-      let nextMessage = "";
-      if (!isOpenNow) {
-        if (currentHour < todaySchedule.open) {
-          nextMessage = `Buka ${todaySchedule.open}:00`;
-        } else {
-          const tomorrow = new Date(now);
-          tomorrow.setDate(tomorrow.getDate() + 1);
-          const tomorrowDay = tomorrow.getDay();
-          const tomorrowSchedule = storeSchedule[scheduleKeys[tomorrowDay === 0 ? 6 : tomorrowDay - 1]];
-          
-          if (tomorrowSchedule) {
-            nextMessage = `Buka besok ${tomorrowSchedule.open}:00`;
-          }
+    }
+    
+    const isOpenNow = currentHour >= todaySchedule.open && currentHour < todaySchedule.close;
+    
+    let nextMessage = "";
+    if (!isOpenNow) {
+      if (currentHour < todaySchedule.open) {
+        nextMessage = `Buka ${todaySchedule.open}:00`;
+      } else {
+        const tomorrow = new Date(now);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const tomorrowDay = tomorrow.getDay();
+        const tomorrowSchedule = storeSchedule[scheduleKeys[tomorrowDay === 0 ? 6 : tomorrowDay - 1]];
+        
+        if (tomorrowSchedule) {
+          nextMessage = `Buka besok ${tomorrowSchedule.open}:00`;
         }
       }
-      
-      return {
-        isOpen: isOpenNow,
-        message: isOpenNow ? "Buka Sekarang" : "Tutup",
-        nextOpen: nextMessage,
-        hours: `${todaySchedule.open}:00 - ${todaySchedule.close}:00`
-      };
+    }
+    
+    return {
+      isOpen: isOpenNow,
+      message: isOpenNow ? "Buka Sekarang" : "Tutup",
+      nextOpen: nextMessage,
+      hours: `${todaySchedule.open}:00 - ${todaySchedule.close}:00`
     };
+  };
 
-    const initialStatus = calculateStatus();
-    setStoreStatus(initialStatus);
+  const [storeStatus, setStoreStatus] = useState(() => calculateStatus());
 
+  useEffect(() => {
     const intervalId = setInterval(() => {
       const newStatus = calculateStatus();
       setStoreStatus(prev => {
@@ -99,18 +90,35 @@ export default function Navbar() {
   const location = useLocation();
   const { getCartCount } = useCart();
 
-  const isActive = (path) => {
-    return location.pathname === path;
-  };
+  const isActive = (path) => location.pathname === path;
 
   const openCart = () => {
     setIsCartOpen(true);
     setIsMenuOpen(false);
   };
 
-  const closeCart = () => {
-    setIsCartOpen(false);
-  };
+  const closeCart = () => setIsCartOpen(false);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
+  const menuItems = [
+    { path: "/", label: "Home" },
+    { path: "/catalog", label: "Menu" },
+    { path: "/aboutus", label: "About Us" },
+    { path: "/contact", label: "Contact" },
+  ];
 
   return (
     <>
@@ -136,50 +144,19 @@ export default function Navbar() {
             </div>
 
             <div className="hidden md:flex space-x-6 items-center">
-              <Link 
-                to="/" 
-                className={`relative hover:text-amber-300 transition-colors duration-200 ${
-                  isActive('/') ? 'text-amber-300 font-semibold' : ''
-                }`}
-              >
-                Home
-                {isActive('/') && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-amber-300"></span>
-                )}
-              </Link>
-              <Link 
-                to="/catalog" 
-                className={`relative hover:text-amber-300 transition-colors duration-200 ${
-                  isActive('/catalog') ? 'text-amber-300 font-semibold' : ''
-                }`}
-              >
-                Menu
-                {isActive('/catalog') && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-amber-300"></span>
-                )}
-              </Link>
-              <Link 
-                to="/aboutus" 
-                className={`relative hover:text-amber-300 transition-colors duration-200 ${
-                  isActive('/aboutus') ? 'text-amber-300 font-semibold' : ''
-                }`}
-              >
-                About
-                {isActive('/aboutus') && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-amber-300"></span>
-                )}
-              </Link>
-              <Link 
-                to="/contact" 
-                className={`relative hover:text-amber-300 transition-colors duration-200 ${
-                  isActive('/contact') ? 'text-amber-300 font-semibold' : ''
-                }`}
-              >
-                Contact
-                {isActive('/contact') && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-amber-300"></span>
-                )}
-              </Link>
+              {menuItems.map((item) => (
+                <Link 
+                  key={item.path}
+                  to={item.path} 
+                  className={`px-4 py-2 rounded-lg transition-all duration-200 ${
+                    isActive(item.path) 
+                      ? 'bg-white text-[#DC7331] font-bold shadow' 
+                      : 'hover:text-amber-300'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
 
             <div className="hidden md:flex items-center gap-4">
@@ -196,11 +173,7 @@ export default function Navbar() {
               </button>
             </div>
 
-            {/* responsive*/}
             <div className="md:hidden flex items-center gap-4">
-              <div className="text-right">
-              </div>
-              
               <button
                 onClick={openCart}
                 className="relative hover:text-amber-300 transition-colors"
@@ -214,11 +187,11 @@ export default function Navbar() {
               </button>
               
               <button 
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="p-1"
+                onClick={toggleMenu}
+                className="p-2 hover:text-amber-300 transition-colors"
               >
                 <svg
-                  className="w-7 h-7"
+                  className="w-6 h-6"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -227,11 +200,7 @@ export default function Navbar() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d={
-                      isMenuOpen
-                        ? "M6 18L18 6M6 6l12 12"
-                        : "M4 6h16M4 12h16M4 18h16"
-                    }
+                    d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
                   />
                 </svg>
               </button>
@@ -240,75 +209,87 @@ export default function Navbar() {
           </div>
         </div>
 
-        {isMenuOpen && (
-          <div className="md:hidden bg-[#DC7331] px-4 pb-6 space-y-2">
-            <Link 
-              to="/" 
-              className={`block py-2 px-3 rounded transition-colors duration-200 ${
-                isActive('/') 
-                  ? 'bg-amber-700 text-amber-300 font-semibold' 
-                  : 'hover:text-amber-300 hover:bg-amber-600/30'
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Home
-            </Link>
-            <Link 
-              to="/catalog" 
-              className={`block py-2 px-3 rounded transition-colors duration-200 ${
-                isActive('/catalog') 
-                  ? 'bg-amber-700 text-amber-300 font-semibold' 
-                  : 'hover:text-amber-300 hover:bg-amber-600/30'
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Menu
-            </Link>
-            <Link 
-              to="/aboutus" 
-              className={`block py-2 px-3 rounded transition-colors duration-200 ${
-                isActive('/aboutus') 
-                  ? 'bg-amber-700 text-amber-300 font-semibold' 
-                  : 'hover:text-amber-300 hover:bg-amber-600/30'
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              About
-            </Link>
-            <Link 
-              to="/contact" 
-              className={`block py-2 px-3 rounded transition-colors duration-200 ${
-                isActive('/contact') 
-                  ? 'bg-amber-700 text-amber-300 font-semibold' 
-                  : 'hover:text-amber-300 hover:bg-amber-600/30'
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contact
-            </Link>
+        {/* Menu Mobile */}
+        <div className={`md:hidden fixed inset-0 z-50 transition-all duration-300 ${
+          isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+        }`}>
+          <div className={`absolute inset-0 bg-[#DC7331] transition-transform duration-300 ${
+            isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}>
             
-            {/* Cart Button in Mobile Menu */}
-            <button
-              onClick={() => {
-                setIsMenuOpen(false);
-                openCart();
-              }}
-              className={`block py-2 px-3 rounded transition-colors duration-200 flex items-center justify-between w-full ${
-                isActive('/cart') 
-                  ? 'bg-amber-700 text-amber-300 font-semibold' 
-                  : 'hover:text-amber-300 hover:bg-amber-600/30'
-              }`}
-            >
-              <span>Keranjang</span>
-              {getCartCount() > 0 && (
-                <span className="bg-red-500 text-white text-xs font-bold rounded-full px-2 py-1">
-                  {getCartCount()} item
-                </span>
-              )}
-            </button>
+            <div className="absolute top-4 right-4 z-10">
+              <button
+                onClick={closeMenu}
+                className="p-3 text-white hover:text-amber-300 transition-colors"
+              >
+                <FaTimes size={28} />
+              </button>
+            </div>
 
+            <div className="flex flex-col items-center justify-center pt-16 pb-8">
+              <img
+                src={Logo}
+                alt="SoreCoffee"
+                className="w-24 h-24 object-contain mb-4"
+              />
+              <h1 className="text-2xl font-bold text-white mb-2">Sore Coffee</h1>
+              <div className="flex items-center gap-2">
+                <span className={`inline-block w-3 h-3 rounded-full ${storeStatus.isOpen ? 'bg-green-400 animate-pulse' : 'bg-red-500'}`}></span>
+                <span className="text-white/90">{storeStatus.message}</span>
+              </div>
+            </div>
+
+            <div className="px-6 space-y-2">
+              {menuItems.map((item) => (
+                <Link 
+                  key={item.path}
+                  to={item.path} 
+                  className={`block text-center py-4 text-xl font-medium rounded-xl transition-all duration-200 ${
+                    isActive(item.path) 
+                      ? 'bg-white text-[#DC7331] shadow-lg scale-105' 
+                      : 'text-white hover:bg-white/20 hover:scale-[1.02]'
+                  }`}
+                  onClick={closeMenu}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              
+              {/* Cart Button */}
+              <button
+                onClick={() => {
+                  closeMenu();
+                  openCart();
+                }}
+                className={`w-full flex items-center justify-center gap-3 py-4 text-xl font-medium rounded-xl transition-all duration-200 ${
+                  getCartCount() > 0 
+                    ? 'bg-amber-500 text-white shadow-lg hover:bg-amber-600' 
+                    : 'bg-white/20 text-white hover:bg-white/30'
+                }`}
+              >
+                <FaShoppingCart />
+                <span>Keranjang</span>
+                {getCartCount() > 0 && (
+                  <span className="bg-red-500 text-white text-sm font-bold rounded-full px-3 py-1">
+                    {getCartCount()} item
+                  </span>
+                )}
+              </button>
+            </div>
+
+            <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-white/20">
+              <div className="text-center">
+                <p className="text-white/80 mb-1">Jam Operasional</p>
+                <p className="text-white text-lg font-semibold mb-2">{storeStatus.hours}</p>
+                {!storeStatus.isOpen && storeStatus.nextOpen && (
+                  <p className="text-amber-300">
+                    ⏰ {storeStatus.nextOpen}
+                  </p>
+                )}
+              </div>
+            </div>
           </div>
-        )}
+        </div>
       </nav>
 
       <CartSidebar isOpen={isCartOpen} onClose={closeCart} />
