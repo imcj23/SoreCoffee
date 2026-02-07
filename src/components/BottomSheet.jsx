@@ -128,7 +128,6 @@ export default function BottomSheet({ menu, isOpen, onClose }) {
           height: "auto",
         }}
       >
-        {/* Drag Handle */}
         <div className="sticky top-0 bg-white pt-4 pb-2 rounded-t-3xl z-10">
           <div className="w-12 h-1.5 bg-gray-300 rounded-full mx-auto mb-4" />
           <button
@@ -140,9 +139,7 @@ export default function BottomSheet({ menu, isOpen, onClose }) {
           </button>
         </div>
 
-        {/* Content */}
         <div className="px-4 md:px-6 pb-6 md:pb-8">
-          {/* Image Section */}
           <div className="relative mb-6 rounded-2xl overflow-hidden">
             <div className="aspect-4/3 md:aspect-video w-full">
               <img
@@ -158,7 +155,6 @@ export default function BottomSheet({ menu, isOpen, onClose }) {
             </div>
           </div>
 
-          {/* Title and Price */}
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-4">
             <div className="flex-1">
               <h3 className="text-xl md:text-2xl font-bold text-gray-900">
@@ -188,12 +184,10 @@ export default function BottomSheet({ menu, isOpen, onClose }) {
             </div>
           </div>
 
-          {/* Description */}
           <p className="text-gray-600 text-sm md:text-base mb-6">
             {menu.description}
           </p>
 
-          {/* Tags */}
           <div className="flex flex-wrap gap-2 mb-6">
             {Array.isArray(menu.tags) &&
               menu.tags.map((tag, index) => (
@@ -206,7 +200,6 @@ export default function BottomSheet({ menu, isOpen, onClose }) {
               ))}
           </div>
 
-          {/* Nutrition Info */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
             <div className="bg-gray-50 p-4 rounded-xl">
               <div className="flex items-center gap-2 text-gray-700 mb-1">
@@ -217,7 +210,6 @@ export default function BottomSheet({ menu, isOpen, onClose }) {
             </div>
           </div>
 
-          {/* Ingredients */}
           {Array.isArray(menu.ingredients) && menu.ingredients.length > 0 && (
             <div className="mb-8">
               <h4 className="text-base md:text-lg font-bold text-gray-900 mb-3">
@@ -236,7 +228,6 @@ export default function BottomSheet({ menu, isOpen, onClose }) {
             </div>
           )}
 
-          {/* Quantity Selector */}
           <div className="mb-6">
             <h4 className="text-base md:text-lg font-bold text-gray-900 mb-3">
               Jumlah Pesanan
@@ -273,7 +264,6 @@ export default function BottomSheet({ menu, isOpen, onClose }) {
             </div>
           </div>
 
-          {/* Action Buttons */}
           <div className="sticky bottom-0 left-0 right-0 bg-white pt-4 border-t">
             <div className="flex flex-col sm:flex-row gap-3">
               <button
