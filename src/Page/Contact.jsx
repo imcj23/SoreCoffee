@@ -112,7 +112,7 @@ export default function Contact() {
               <div className="bg-white/10 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm">
                 <span className="flex items-center">
                   <FaClock className="mr-1.5 sm:mr-2 w-3 h-3 sm:w-4 sm:h-4" /> 
-                  Buka: 07:00 - 22:00 WIB
+                  Buka: 08:00 - 22:00 WIB
                 </span>
               </div>
               <div className="bg-white/10 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm">

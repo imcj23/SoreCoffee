@@ -9,7 +9,7 @@ import {
   FaStore,
   FaUser,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useCart from "../hooks/useCart";
 
 const parsePrice = (priceString) => {
@@ -50,6 +50,7 @@ const OUTLET_OPTIONS = [
 ];
 
 const CartSidebar = ({ isOpen, onClose }) => {
+  const navigate = useNavigate();
   const [isAnimating, setIsAnimating] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [customerName, setCustomerName] = useState("");
@@ -91,6 +92,10 @@ const CartSidebar = ({ isOpen, onClose }) => {
       onClose();
       setIsVisible(false);
     }, 300);
+  };
+
+  const handleMenuClick = () => {
+    navigate("/catalog");
   };
 
   const getSelectedOutlet = () => {
@@ -219,9 +224,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
 
       <div
         className={`fixed top-0 right-0 h-full w-full sm:w-96 z-50 bg-white shadow-2xl transform transition-all duration-300 ease-in-out ${
-          isAnimating
-            ? "translate-x-0"
-            : "translate-x-full"
+          isAnimating ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
@@ -243,7 +246,6 @@ const CartSidebar = ({ isOpen, onClose }) => {
           </button>
         </div>
 
-        {/* Cart Content */}
         <div className="h-full flex flex-col">
           {cartItems.length === 0 ? (
             <div className="flex-1 flex flex-col items-center justify-center p-8 text-center">
@@ -257,7 +259,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                 Tambahkan menu favorit Anda ke keranjang
               </p>
               <button
-                onClick={handleClose}
+                onClick={handleMenuClick}
                 className="px-6 py-3 bg-amber-900 text-white font-bold rounded-xl hover:bg-amber-800 transition-colors transform hover:scale-105 active:scale-95"
               >
                 Lihat Menu
@@ -265,8 +267,8 @@ const CartSidebar = ({ isOpen, onClose }) => {
             </div>
           ) : (
             <>
-              <div className="flex-1 overflow-y-auto p-2">
-                <div className="space-y-4">
+              <div className="flex-1 overflow-y-auto p-4 sm:p-6">
+                <div className="space-y-4 mb-6">
                   {cartItems.map((item) => {
                     const itemPrice = parsePrice(item.price);
                     const itemTotal = itemPrice * item.quantity;
@@ -277,7 +279,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                         className="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm transform transition-transform hover:scale-[1.01]"
                       >
                         <div className="flex gap-4">
-                          <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+                          <div className="w-20 h-20 rounded-xl overflow-hidden shrink-0">
                             <img
                               src={item.image}
                               alt={item.name}
@@ -346,84 +348,84 @@ const CartSidebar = ({ isOpen, onClose }) => {
                     );
                   })}
                 </div>
-              </div>
 
-              {showForm && (
-                <div className="px-4 pt-2 animate-fadeIn">
-                  <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-4">
-                    <div className="flex items-center gap-2 mb-3">
-                      <FaUser className="text-amber-900" size={18} />
-                      <h3 className="font-bold text-gray-900">
-                        Informasi Pesanan
-                      </h3>
-                    </div>
+                {showForm && (
+                  <div className="animate-fadeIn mb-6">
+                    <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4">
+                      <div className="flex items-center gap-2 mb-4">
+                        <FaUser className="text-amber-900" size={18} />
+                        <h3 className="font-bold text-gray-900">
+                          Informasi Pesanan
+                        </h3>
+                      </div>
 
-                    <div className="mb-4">
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Nama Anda *
-                      </label>
-                      <input
-                        type="text"
-                        value={customerName}
-                        onChange={(e) => setCustomerName(e.target.value)}
-                        placeholder="Masukkan nama lengkap"
-                        className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        <FaStore
-                          className="inline mr-2 text-amber-900"
-                          size={16}
+                      <div className="mb-4">
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Nama Anda *
+                        </label>
+                        <input
+                          type="text"
+                          value={customerName}
+                          onChange={(e) => setCustomerName(e.target.value)}
+                          placeholder="Masukkan nama lengkap"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+                          required
                         />
-                        Pilih Outlet Pengambilan *
-                      </label>
-                      <div className="space-y-2 max-h-48 overflow-y-auto pr-2">
-                        {OUTLET_OPTIONS.map((outlet) => (
-                          <div
-                            key={outlet.id}
-                            className={`p-3 border rounded-xl cursor-pointer transition-all transform hover:scale-[1.01] ${
-                              selectedOutlet === outlet.id
-                                ? "border-amber-900 bg-amber-100"
-                                : "border-gray-300 hover:bg-gray-50"
-                            }`}
-                            onClick={() => setSelectedOutlet(outlet.id)}
-                          >
-                            <div className="flex items-start">
-                              <div
-                                className={`w-5 h-5 rounded-full border flex items-center justify-center mt-0.5 mr-3 transition-all ${
-                                  selectedOutlet === outlet.id
-                                    ? "border-amber-900 bg-amber-900"
-                                    : "border-gray-400"
-                                }`}
-                              >
-                                {selectedOutlet === outlet.id && (
-                                  <div className="w-2 h-2 rounded-full bg-white"></div>
-                                )}
-                              </div>
-                              <div>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          <FaStore
+                            className="inline mr-2 text-amber-900"
+                            size={16}
+                          />
+                          Pilih Outlet Pengambilan *
+                        </label>
+                        <div className="space-y-3 max-h-48 overflow-y-auto pr-2">
+                          {OUTLET_OPTIONS.map((outlet) => (
+                            <div
+                              key={outlet.id}
+                              className={`p-4 border rounded-xl cursor-pointer transition-all transform hover:scale-[1.01] ${
+                                selectedOutlet === outlet.id
+                                  ? "border-amber-900 bg-amber-100"
+                                  : "border-gray-300 hover:bg-gray-50"
+                              }`}
+                              onClick={() => setSelectedOutlet(outlet.id)}
+                            >
+                              <div className="flex items-start">
                                 <div
-                                  className={`font-medium transition-colors ${
+                                  className={`w-5 h-5 rounded-full border flex items-center justify-center mt-0.5 mr-3 transition-all ${
                                     selectedOutlet === outlet.id
-                                      ? "text-amber-900"
-                                      : "text-gray-900"
+                                      ? "border-amber-900 bg-amber-900"
+                                      : "border-gray-400"
                                   }`}
                                 >
-                                  {outlet.name}
+                                  {selectedOutlet === outlet.id && (
+                                    <div className="w-2 h-2 rounded-full bg-white"></div>
+                                  )}
+                                </div>
+                                <div>
+                                  <div
+                                    className={`font-medium transition-colors ${
+                                      selectedOutlet === outlet.id
+                                        ? "text-amber-900"
+                                        : "text-gray-900"
+                                    }`}
+                                  >
+                                    {outlet.name}
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        ))}
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
 
-              <div className="border-t border-gray-200 p-6 bg-white">
+              <div className="border-t border-gray-200 bg-white pt-6 pb-8 px-4 sm:px-6 mt-auto">
                 <div className="space-y-4">
                   <div className="space-y-2">
                     {cartItems.map((item) => {
@@ -455,11 +457,11 @@ const CartSidebar = ({ isOpen, onClose }) => {
                       </span>
                     </div>
 
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       {!showForm ? (
                         <button
                           onClick={handleProceedToCheckout}
-                          className="w-full py-3 bg-amber-900 text-white rounded-xl font-bold hover:bg-amber-800 active:scale-[0.98] transition-all shadow-lg hover:shadow-xl"
+                          className="w-full py-4 bg-amber-900 text-white rounded-xl font-bold hover:bg-amber-800 active:scale-[0.98] transition-all shadow-lg hover:shadow-xl"
                         >
                           Lanjutkan ke Checkout
                         </button>
@@ -467,7 +469,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                         <>
                           <button
                             onClick={handleWhatsAppCheckout}
-                            className="w-full py-3 bg-green-600 text-white rounded-xl font-bold hover:bg-green-700 active:scale-[0.98] transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
+                            className="w-full py-4 bg-green-600 text-white rounded-xl font-bold hover:bg-green-700 active:scale-[0.98] transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
                           >
                             <FaWhatsapp size={20} />
                             Kirim Pesanan ke WhatsApp
@@ -475,7 +477,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
 
                           <button
                             onClick={() => setShowForm(false)}
-                            className="w-full py-3 border-2 border-amber-900 text-amber-900 rounded-xl hover:bg-amber-50 active:scale-[0.98] transition-all font-bold"
+                            className="w-full py-4 border-2 border-amber-900 text-amber-900 rounded-xl hover:bg-amber-50 active:scale-[0.98] transition-all font-bold mt-2"
                           >
                             Kembali ke Keranjang
                           </button>
@@ -484,7 +486,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
 
                       {!showForm && (
                         <>
-                          <div className="grid grid-cols-2 gap-3">
+                          <div className="grid grid-cols-2 gap-4 mt-4">
                             <button
                               onClick={clearCart}
                               className="py-3 border border-red-500 text-red-500 rounded-xl hover:bg-red-50 active:scale-[0.98] transition-all font-medium"
@@ -501,7 +503,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                             </Link>
                           </div>
 
-                          <div className="text-center text-xs text-gray-500 mt-4 pt-4 border-t border-gray-100">
+                          <div className="text-center text-xs text-gray-500 pt-4 border-t border-gray-100">
                             <p>
                               Klik "Lanjutkan ke Checkout" untuk mengisi data
                               pesanan
@@ -511,7 +513,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                       )}
 
                       {showForm && (
-                        <div className="text-center text-xs text-gray-500 mt-2 animate-fadeIn">
+                        <div className="text-center text-xs text-gray-500 pt-4 border-t border-gray-100 mt-4">
                           <p>
                             Pastikan nama dan outlet sudah benar sebelum
                             mengirim pesanan

@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 
-export default function CartNotification (){
+export default function CartNotification() {
   const [notification, setNotification] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const handleCartAdded = (event) => {
@@ -10,9 +11,16 @@ export default function CartNotification (){
         visible: true
       });
 
-      setTimeout(() => {
-        setNotification(prev => ({ ...prev, visible: false }));
+      setIsVisible(true);
+
+      const timer = setTimeout(() => {
+        setIsVisible(false);
+        setTimeout(() => {
+          setNotification(null);
+        }, 300);
       }, 3000);
+
+      return () => clearTimeout(timer);
     };
 
     window.addEventListener('cart:added', handleCartAdded);
@@ -22,18 +30,15 @@ export default function CartNotification (){
     };
   }, []);
 
-  if (!notification || !notification.visible) return null;
+  if (!notification || !isVisible) return null;
 
   return (
-    <>
-    <div className="fixed top-4 right-4 z-50 animate-fade-in-down">
-      <div className="bg-green-500 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2">
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-        </svg>
-        <span>{notification.message}</span>
+    <div className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-sm">
+      <div className={`bg-linear-to-r from-green-500 to-emerald-600 text-white px-5 py-4 rounded-xl shadow-2xl border border-white/20 flex items-center gap-3 mx-4 transition-all duration-300 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0'}`}>
+        <div className="flex-1">
+          <p className="font-medium text-sm">{notification.message}</p>
+        </div>
       </div>
     </div>
-    </>
-  )
+  );
 }
