@@ -67,7 +67,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
   } = useCart();
 
   const whatsappConfig = {
-    phoneNumber: "6281367048816",
+    phoneNumber: "6285222255234",
     storeName: "Sore Coffee",
     businessHours: "08:00 - 22:00",
   };
@@ -153,9 +153,9 @@ const CartSidebar = ({ isOpen, onClose }) => {
     });
 
     message += `\n━━━━━━━━━━━━━━━━━━━━\n`;
-    message += `*💰 TOTAL PEMBAYARAN:*\n`;
+    message += `*TOTAL PEMBAYARAN:*\n`;
     message += `*Rp ${getCartTotal().toLocaleString("id-ID")}*\n\n`;
-    message += `Terima kasih telah berbelanja di ${whatsappConfig.storeName}! 🎉\n`;
+    message += `Terima kasih telah berbelanja di ${whatsappConfig.storeName}! \n`;
     message += `Pesanan Anda akan diproses segera.`;
 
     const encodedMessage = encodeURIComponent(message);
