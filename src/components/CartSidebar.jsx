@@ -176,7 +176,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
       clearCart();
       setCustomerName("");
       setSelectedOutlet(OUTLET_OPTIONS[0].id);
-      setShowForm(false);
+      // setShowForm(false);
       handleClose();
     }
   };
@@ -201,9 +201,9 @@ const CartSidebar = ({ isOpen, onClose }) => {
       document.addEventListener("keydown", handleEscape);
       document.body.style.overflow = "hidden";
 
-      if (cartItems.length === 0) {
-        setShowForm(false);
-      }
+      // if (cartItems.length === 0) {
+      //   setShowForm(false);
+      // }
     }
 
     return () => {

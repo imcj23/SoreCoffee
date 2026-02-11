@@ -1,5 +1,15 @@
 import { useState } from "react";
-import { FaStar, FaClock, FaCoffee, FaLeaf, FaShoppingCart, FaFilter, FaTag, FaPercent, FaGlassCheers } from "react-icons/fa";
+import {
+  FaStar,
+  FaClock,
+  FaCoffee,
+  FaLeaf,
+  FaShoppingCart,
+  FaFilter,
+  FaTag,
+  FaPercent,
+  FaGlassCheers,
+} from "react-icons/fa";
 import { FaFireFlameCurved } from "react-icons/fa6";
 import { menus } from "../utils/menu";
 import Navbar from "../components/Navbar";
@@ -27,13 +37,14 @@ export default function Catalog() {
   const filteredItems =
     activeCategory === "all"
       ? menus
-      : menus.filter((item) =>
-          item.category.toLowerCase() === activeCategory.toLowerCase()
+      : menus.filter(
+          (item) =>
+            item.category.toLowerCase() === activeCategory.toLowerCase(),
         );
 
-  const popularItems = menus.filter(item => item.rating >= 4.5);
-  const coffeeItems = menus.filter(item => item.category === "Coffee");
-  const nonCoffeeItems = menus.filter(item => item.category === "Non-Coffee");
+  const popularItems = menus.filter((item) => item.rating >= 4.5);
+  const coffeeItems = menus.filter((item) => item.category === "Coffee");
+  const nonCoffeeItems = menus.filter((item) => item.category === "Non-Coffee");
 
   return (
     <>
@@ -50,27 +61,40 @@ export default function Catalog() {
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Menu <span className="text-amber-300">SoreCoffee</span>
             </h1>
-            
+
             <p className="text-lg md:text-xl opacity-90 max-w-3xl mx-auto mb-8 px-4">
-              Temukan cita rasa terbaik dalam setiap tegukan. Dari kopi klasik hingga kreasi spesial
+              Temukan cita rasa terbaik dalam setiap tegukan. Dari kopi klasik
+              hingga kreasi spesial
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-12">
               <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-amber-300">{menus.length}+</div>
-                <div className="text-xs md:text-sm opacity-80">Menu Variasi</div>
+                <div className="text-2xl md:text-3xl font-bold text-amber-300">
+                  {menus.length}+
+                </div>
+                <div className="text-xs md:text-sm opacity-80">
+                  Menu Variasi
+                </div>
               </div>
               <div className="text-center">
                 <div className="text-2xl md:text-3xl font-bold text-amber-300">
-                  {Math.round(menus.reduce((acc, item) => acc + item.rating, 0) / menus.length * 10) / 10}
+                  {Math.round(
+                    (menus.reduce((acc, item) => acc + item.rating, 0) /
+                      menus.length) *
+                      10,
+                  ) / 10}
                 </div>
-                <div className="text-xs md:text-sm opacity-80">Rating Rata-rata</div>
+                <div className="text-xs md:text-sm opacity-80">
+                  Rating Rata-rata
+                </div>
               </div>
               <div className="text-center">
                 <div className="text-2xl md:text-3xl font-bold text-amber-300">
                   {popularItems.length}
                 </div>
-                <div className="text-xs md:text-sm opacity-80">Menu Populer</div>
+                <div className="text-xs md:text-sm opacity-80">
+                  Menu Populer
+                </div>
               </div>
             </div>
           </div>
@@ -126,7 +150,6 @@ export default function Catalog() {
             </div>
           </div>
 
-
           {/* list menu sore coffee */}
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6 mb-12 md:mb-16">
             {filteredItems.map((item) => (
@@ -141,10 +164,12 @@ export default function Catalog() {
                     alt={item.name}
                     className="w-full h-full object-cover group-hover:scale-105 md:group-hover:scale-110 transition-transform duration-500"
                   />
-                  
+
                   <div className="absolute bottom-3 right-3 md:bottom-4 md:right-4 z-20">
                     <div className="bg-white/95 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-lg md:rounded-xl shadow-md">
-                      <span className="text-amber-900 font-bold text-sm md:text-lg">{item.price}</span>
+                      <span className="text-amber-900 font-bold text-sm md:text-lg">
+                        {item.price}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -155,16 +180,18 @@ export default function Catalog() {
                       <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1 md:mb-2 line-clamp-1 group-hover:text-amber-800 transition-colors">
                         {item.name}
                       </h3>
-                      
+
                       <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 md:gap-3 mb-2 md:mb-3">
-                        <span className={`px-2 md:px-3 py-0.5 md:py-1 rounded-full text-xs font-medium ${
-                          item.category === "Coffee"
-                            ? "bg-amber-100 text-amber-800"
-                            : "bg-green-100 text-green-800"
-                        }`}>
+                        <span
+                          className={`inline-flex px-2 py-1  rounded-full text-xs font-medium whitespace-nowrap ${
+                            item.category === "Coffee"
+                              ? "bg-amber-100 text-amber-800"
+                              : "bg-green-100 text-green-800"
+                          }`}
+                        >
                           {item.category}
                         </span>
-                        
+
                         <div className="flex items-center">
                           {[...Array(5)].map((_, i) => (
                             <FaStar
@@ -185,16 +212,12 @@ export default function Catalog() {
                     </div>
                   </div>
 
-                  {/* <p className="text-gray-600 text-xs md:text-sm mb-3 md:mb-4 line-clamp-2">
-                    {item.description}
-                  </p>   */}
-
                   {item.tags && item.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6">
+                    <div className="flex flex-col sm:flex-row sm:flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6">
                       {item.tags.slice(0, 2).map((tag, index) => (
                         <span
                           key={index}
-                          className="px-2 md:px-3 py-0.5 md:py-1 bg-linear-to-r from-amber-50 to-orange-50 text-amber-800 rounded text-xs md:text-xs font-medium border border-amber-200"
+                          className="px-2 md:px-3 py-0.5 md:py-1 bg-linear-to-r from-amber-50 to-orange-50 text-amber-800 rounded text-xs md:text-xs font-medium border border-amber-200 w-fit"
                         >
                           {tag}
                         </span>
@@ -205,19 +228,32 @@ export default function Catalog() {
                   <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-amber-100">
                     <div className="flex items-center gap-3 md:gap-4 text-xs md:text-sm text-gray-500">
                       <div className="flex items-center gap-1 md:gap-2">
-                        <FaFireFlameCurved className="text-orange-500 md:size-4" size={12} />
+                        <FaFireFlameCurved
+                          className="text-orange-500 md:size-4"
+                          size={12}
+                        />
                         <span>{item.calories} kcal</span>
                       </div>
                     </div>
-                    
+
                     <button
                       onClick={() => openSheet(item)}
                       className="group relative px-3 md:px-5 py-1.5 md:py-2.5 bg-linear-to-r from-amber-600 to-orange-600 text-white font-medium md:font-semibold rounded-full transition-all duration-300 hover:shadow-md md:hover:shadow-lg hover:shadow-amber-200 hover:-translate-y-0.5 overflow-hidden"
                     >
                       <span className="relative z-10 flex items-center gap-1 md:gap-2 text-xs md:text-sm">
                         Detail
-                        <svg className="w-3 h-3 md:w-4 md:h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        <svg
+                          className="w-3 h-3 md:w-4 md:h-4 group-hover:translate-x-1 transition-transform"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                          />
                         </svg>
                       </span>
                       <div className="absolute inset-0 bg-linear-to-r from-amber-700 to-orange-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -236,14 +272,15 @@ export default function Catalog() {
                   <FaCoffee className="text-amber-300 md:size-16" size={48} />
                 </div>
               </div>
-              
+
               <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 md:mb-3">
                 Menu Tidak Ditemukan
               </h3>
               <p className="text-gray-600 mb-6 md:mb-8 max-w-md mx-auto px-4 text-sm md:text-base">
-                Kami sedang memperbarui menu untuk kategori ini. Coba pilih kategori lain!
+                Kami sedang memperbarui menu untuk kategori ini. Coba pilih
+                kategori lain!
               </p>
-              
+
               <button
                 onClick={() => setActiveCategory("all")}
                 className="px-6 md:px-8 py-2.5 md:py-3 bg-linear-to-r from-amber-600 to-orange-600 text-white font-bold rounded-full hover:shadow-lg hover:shadow-amber-200 transition-all duration-300 transform hover:-translate-y-1 text-sm md:text-base"
@@ -258,7 +295,9 @@ export default function Catalog() {
             <div className="text-center mb-8 md:mb-10">
               <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-3 md:px-4 py-1.5 md:py-2 rounded-full mb-3 md:mb-4">
                 <FaGlassCheers />
-                <span className="text-xs md:text-sm font-semibold">Keunggulan Kami</span>
+                <span className="text-xs md:text-sm font-semibold">
+                  Keunggulan Kami
+                </span>
               </div>
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 md:mb-4">
                 Mengapa <span className="text-amber-600">SoreCoffee?</span>
@@ -270,9 +309,12 @@ export default function Catalog() {
                 <div className="bg-linear-to-r from-amber-500 to-orange-500 w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 mx-auto md:mx-0">
                   <FaCoffee className="text-white text-xl md:text-2xl" />
                 </div>
-                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3 text-center md:text-left">Biji Kopi Pilihan</h3>
+                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3 text-center md:text-left">
+                  Biji Kopi Pilihan
+                </h3>
                 <p className="text-gray-600 text-sm md:text-base text-center md:text-left">
-                  Biji kopi arabika terbaik dari perkebunan lokal dengan roasting sempurna
+                  Biji kopi arabika terbaik dari perkebunan lokal dengan
+                  roasting sempurna
                 </p>
               </div>
 
@@ -280,7 +322,9 @@ export default function Catalog() {
                 <div className="bg-linear-to-r from-green-500 to-emerald-500 w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 mx-auto md:mx-0">
                   <FaLeaf className="text-white text-xl md:text-2xl" />
                 </div>
-                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3 text-center md:text-left">Bahan Alami</h3>
+                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3 text-center md:text-left">
+                  Bahan Alami
+                </h3>
                 <p className="text-gray-600 text-sm md:text-base text-center md:text-left">
                   100% bahan alami tanpa pengawet atau bahan kimia tambahan
                 </p>
@@ -290,7 +334,9 @@ export default function Catalog() {
                 <div className="bg-linear-to-r from-purple-500 to-pink-500 w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 mx-auto md:mx-0">
                   <FaTag className="text-white text-xl md:text-2xl" />
                 </div>
-                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3 text-center md:text-left">Harga Terjangkau</h3>
+                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3 text-center md:text-left">
+                  Harga Terjangkau
+                </h3>
                 <p className="text-gray-600 text-sm md:text-base text-center md:text-left">
                   Kualitas premium dengan harga yang ramah di kantong
                 </p>
@@ -307,7 +353,7 @@ export default function Catalog() {
           onClose={closeSheet}
         />
       )}
-      
+
       <Footer />
     </>
   );
