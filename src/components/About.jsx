@@ -18,7 +18,7 @@ export default function AboutUs () {
                 className="rounded-2xl shadow-2xl w-full max-w-md mx-auto"
               />
               <div className="absolute -bottom-4 -right-4 bg-amber-700 text-white p-4 rounded-xl shadow-lg">
-                <p className="font-bold text-lg">Bagus</p>
+                <p className="font-bold text-lg">Bagus Setiawan</p>
                 <p className="text-sm">Owner Sore Coffee</p>
               </div>
             </div>

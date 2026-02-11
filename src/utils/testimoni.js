@@ -19,7 +19,7 @@ export const testimonials = [
   },
   {
     id: 3,
-    name: 'Nadila',
+    name: 'Sari',
     role: 'Content Creator',
     comment: 'Butterscotch-nya unik dan enak banget! Rasa karamel butterynya berpadu sempurna dengan kopi. Cocok buat yang suka minuman manis tapi tetap mau taste kopinya keluar.',
     rating: 5,

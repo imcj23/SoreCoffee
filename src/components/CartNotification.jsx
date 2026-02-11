@@ -18,7 +18,7 @@ export default function CartNotification() {
         setTimeout(() => {
           setNotification(null);
         }, 300);
-      }, 3000);
+      }, 1000);
 
       return () => clearTimeout(timer);
     };

@@ -112,11 +112,11 @@ export default function Testimoni() {
                 {testimonials.map((testimonial) => (
                   <div
                     key={testimonial.id}
-                    className="w-full flex-shrink-0 px-2"
+                    className="w-full flex shrink-0 px-2"
                   >
                     <div className="bg-white rounded-2xl shadow-lg p-6 mx-auto max-w-md">
                       <div className="flex items-start mb-4">
-                        <div className="flex-shrink-0 mt-2">
+                        <div className="flex shrink-0 mt-2">
                           <FaUser className="text-amber-500" size={24} />
                         </div>
                         <div className="ml-4">
@@ -168,14 +168,16 @@ export default function Testimoni() {
               <FaChevronRight className="text-amber-700" />
             </button>
 
+            {/* Indikator carousel testimoni */}
             <div className="flex justify-center mt-6">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-3 h-3 rounded-full mx-1 transition-colors ${
-                    index === currentIndex ? "bg-amber-600" : "bg-gray-300"
-                  }`}
+                  className={`w-3 h-3 p-0 rounded-full mx-1 
+      transition-colors duration-300
+      focus:outline-none focus:ring-0
+      ${index === currentIndex ? "bg-amber-600" : "bg-gray-300"}`}
                   aria-label={`Pergi ke testimonial ${index + 1}`}
                 />
               ))}

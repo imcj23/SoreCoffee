@@ -77,6 +77,7 @@ export default function Catalog() {
         </div>
       </div>
 
+      {/* Filter untuk membedakan jenis minuman */}
       <section className="py-8 md:py-12 bg-linear-to-b from-white to-amber-50/30 min-h-screen">
         <div className="container mx-auto px-3 md:px-4 max-w-7xl">
           <div className="sticky top-20 md:top-20 z-30 bg-white/90 backdrop-blur-sm rounded-xl md:rounded-2xl shadow-md md:shadow-lg p-1.5 md:p-2 mb-6 md:mb-10 border border-amber-100">
@@ -125,6 +126,8 @@ export default function Catalog() {
             </div>
           </div>
 
+
+          {/* list menu sore coffee */}
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6 mb-12 md:mb-16">
             {filteredItems.map((item) => (
               <div
@@ -153,7 +156,7 @@ export default function Catalog() {
                         {item.name}
                       </h3>
                       
-                      <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 md:gap-3 mb-2 md:mb-3">
                         <span className={`px-2 md:px-3 py-0.5 md:py-1 rounded-full text-xs font-medium ${
                           item.category === "Coffee"
                             ? "bg-amber-100 text-amber-800"
@@ -182,9 +185,9 @@ export default function Catalog() {
                     </div>
                   </div>
 
-                  <p className="text-gray-600 text-xs md:text-sm mb-3 md:mb-4 line-clamp-2">
+                  {/* <p className="text-gray-600 text-xs md:text-sm mb-3 md:mb-4 line-clamp-2">
                     {item.description}
-                  </p>
+                  </p>   */}
 
                   {item.tags && item.tags.length > 0 && (
                     <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6">

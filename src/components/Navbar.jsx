@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from 'react-router-dom';
-import { FaShoppingCart, FaTimes } from "react-icons/fa";
+import { FaShoppingCart, FaTimes,  } from "react-icons/fa";
 import Logo from '../assets/photo/Logo_sore.png';
 import useCart from "../hooks/useCart";
 import CartSidebar from "../components/CartSidebar";
@@ -166,7 +166,7 @@ export default function Navbar() {
               >
                 <FaShoppingCart size={24} />
                 {getCartCount() > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  <span className="absolute -top-2.5 -right-2.5 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                     {getCartCount()}
                   </span>
                 )}
@@ -209,7 +209,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Menu Mobile */}
         <div className={`md:hidden fixed inset-0 z-50 transition-all duration-300 ${
           isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}>
@@ -254,27 +253,6 @@ export default function Navbar() {
                   {item.label}
                 </Link>
               ))}
-              
-              {/* Cart Button */}
-              <button
-                onClick={() => {
-                  closeMenu();
-                  openCart();
-                }}
-                className={`w-full flex items-center justify-center gap-3 py-4 text-xl font-medium rounded-xl transition-all duration-200 ${
-                  getCartCount() > 0 
-                    ? 'bg-amber-500 text-white shadow-lg hover:bg-amber-600' 
-                    : 'bg-white/20 text-white hover:bg-white/30'
-                }`}
-              >
-                <FaShoppingCart />
-                <span>Keranjang</span>
-                {getCartCount() > 0 && (
-                  <span className="bg-red-500 text-white text-sm font-bold rounded-full px-3 py-1">
-                    {getCartCount()} item
-                  </span>
-                )}
-              </button>
             </div>
 
             <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-white/20">
@@ -282,7 +260,7 @@ export default function Navbar() {
                 <p className="text-white/80 mb-1">Jam Operasional</p>
                 <p className="text-white text-lg font-semibold mb-2">{storeStatus.hours}</p>
                 {!storeStatus.isOpen && storeStatus.nextOpen && (
-                  <p className="text-amber-300">
+                  <p className="text-white">
                     ⏰ {storeStatus.nextOpen}
                   </p>
                 )}

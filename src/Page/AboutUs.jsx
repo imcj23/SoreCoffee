@@ -103,10 +103,9 @@ export default function AboutUs() {
             </div>
           </section>
 
-          {/* Founder Story Section - Responsive Flex */}
+          {/* Cerita Bagus Owner- Responsive */}
           <section className="mb-12 md:mb-20">
             <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12">
-              {/* Founder Image */}
               <div className="w-full lg:w-2/5">
                 <div className="relative">
                   <img
@@ -115,7 +114,7 @@ export default function AboutUs() {
                     className="rounded-2xl md:rounded-3xl shadow-xl md:shadow-2xl w-full"
                   />
                   <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-amber-800 text-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-lg md:shadow-xl">
-                    <p className="font-bold text-lg md:text-xl">Bagus</p>
+                    <p className="font-bold text-lg md:text-xl">Bagus Setiawan</p>
                     <p className="text-amber-200 text-sm md:text-base">
                       Owner Sore Coffee
                     </p>
@@ -123,7 +122,6 @@ export default function AboutUs() {
                 </div>
               </div>
 
-              {/* Founder Bio */}
               <div className="w-full lg:w-3/5">
                 <h2 className="text-2xl md:text-3xl font-bold text-amber-900 mb-4 md:mb-6">
                   Cerita Pendiri
@@ -145,7 +143,6 @@ export default function AboutUs() {
                     pembukanya."
                   </p>
 
-                  {/* Founder Stats */}
                   <div className="flex flex-wrap gap-3 md:gap-4 mt-6 md:mt-8">
                     {[
                       { icon: <FaAward />, text: "Certified Q-Grader" },

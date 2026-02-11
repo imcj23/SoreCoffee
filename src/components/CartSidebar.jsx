@@ -8,6 +8,8 @@ import {
   FaWhatsapp,
   FaStore,
   FaUser,
+  FaArrowLeft,
+  FaChevronDown,
 } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import useCart from "../hooks/useCart";
@@ -55,7 +57,8 @@ const CartSidebar = ({ isOpen, onClose }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [customerName, setCustomerName] = useState("");
   const [selectedOutlet, setSelectedOutlet] = useState(OUTLET_OPTIONS[0].id);
-  const [showForm, setShowForm] = useState(false);
+  const [checkoutStep, setCheckoutStep] = useState("cart");
+  const [isOutletOpen, setIsOutletOpen] = useState(false);
 
   const {
     cartItems,
@@ -105,12 +108,13 @@ const CartSidebar = ({ isOpen, onClose }) => {
     );
   };
 
-  const handleWhatsAppCheckout = () => {
-    if (cartItems.length === 0) return;
+  const selectedOutletName = OUTLET_OPTIONS.find(
+    (outlet) => outlet.id === selectedOutlet,
+  )?.name;
 
+  const handleWhatsAppCheckout = () => {
     if (!customerName.trim()) {
       alert("Harap masukkan nama Anda terlebih dahulu!");
-      setShowForm(true);
       return;
     }
 
@@ -179,8 +183,11 @@ const CartSidebar = ({ isOpen, onClose }) => {
 
   const handleProceedToCheckout = () => {
     if (cartItems.length === 0) return;
+    setCheckoutStep("checkout");
+  };
 
-    setShowForm(!showForm);
+  const handleBackToCart = () => {
+    setCheckoutStep("cart");
   };
 
   useEffect(() => {
@@ -227,26 +234,43 @@ const CartSidebar = ({ isOpen, onClose }) => {
           isAnimating ? "translate-x-0" : "translate-x-full"
         }`}
       >
+        {/* HEADER */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <div className="flex items-center gap-3">
-            <FaShoppingCart className="text-amber-900" size={24} />
-            <h2 className="text-2xl font-bold text-gray-900">Keranjang</h2>
-            {getCartCount() > 0 && (
+            {checkoutStep === "checkout" ? (
+              <button
+                onClick={handleBackToCart}
+                className="p-2 -ml-2 hover:bg-gray-100 rounded-full transition-colors"
+                aria-label="Kembali ke keranjang"
+              >
+                <FaArrowLeft className="text-gray-600" size={20} />
+              </button>
+            ) : (
+              <FaShoppingCart className="text-amber-900" size={24} />
+            )}
+
+            <h2 className="text-2xl font-bold text-gray-900">
+              {checkoutStep === "checkout" ? "Checkout" : "Keranjang"}
+            </h2>
+
+            {checkoutStep === "cart" && getCartCount() > 0 && (
               <span className="bg-amber-900 text-white text-sm font-bold rounded-full px-2 py-1">
                 {getCartCount()} item
               </span>
             )}
           </div>
+
           <button
             onClick={handleClose}
             className="p-2 rounded-full hover:bg-gray-100 transition-colors"
-            aria-label="Tutup keranjang"
+            aria-label="Tutup"
           >
             <FaTimes size={20} />
           </button>
         </div>
 
         <div className="h-full flex flex-col">
+          {/* HALAMAN KERANJANG KOSONG */}
           {cartItems.length === 0 ? (
             <div className="flex-1 flex flex-col items-center justify-center p-8 text-center">
               <div className="w-32 h-32 bg-amber-50 rounded-full flex items-center justify-center mb-6">
@@ -267,226 +291,135 @@ const CartSidebar = ({ isOpen, onClose }) => {
             </div>
           ) : (
             <>
-              <div className="flex-1 overflow-y-auto p-4 sm:p-6">
-                <div className="space-y-4 mb-6">
-                  {cartItems.map((item) => {
-                    const itemPrice = parsePrice(item.price);
-                    const itemTotal = itemPrice * item.quantity;
+              {/* HALAMAN KERANJANG (STEP 1) */}
+              {checkoutStep === "cart" ? (
+                <>
+                  <div className="flex-1 overflow-y-auto p-4 sm:p-6">
+                    <div className="space-y-4 mb-6">
+                      {cartItems.map((item) => {
+                        const itemPrice = parsePrice(item.price);
+                        const itemTotal = itemPrice * item.quantity;
 
-                    return (
-                      <div
-                        key={item.id}
-                        className="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm transform transition-transform hover:scale-[1.01]"
-                      >
-                        <div className="flex gap-4">
-                          <div className="w-20 h-20 rounded-xl overflow-hidden shrink-0">
-                            <img
-                              src={item.image}
-                              alt={item.name}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                          <div className="flex-1">
-                            <div className="flex justify-between items-start mb-2">
-                              <h4 className="font-bold text-gray-900 line-clamp-1">
-                                {item.name}
-                              </h4>
-                              <button
-                                onClick={() => removeFromCart(item.id)}
-                                className="text-red-500 hover:text-red-700 transition-colors p-1"
-                                aria-label={`Hapus ${item.name} dari keranjang`}
-                              >
-                                <FaTrash size={16} />
-                              </button>
-                            </div>
-
-                            <p className="text-sm text-gray-600 mb-3 line-clamp-2">
-                              {item.description}
-                            </p>
-
-                            <div className="flex justify-between items-center">
-                              <div className="flex items-center gap-3">
-                                <button
-                                  onClick={() =>
-                                    updateQuantity(item.id, item.quantity - 1)
-                                  }
-                                  className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
-                                    item.quantity <= 1
-                                      ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                                      : "bg-gray-200 text-gray-700 hover:bg-gray-300 active:scale-95"
-                                  }`}
-                                  disabled={item.quantity <= 1}
-                                  aria-label="Kurangi jumlah"
-                                >
-                                  <FaMinus size={12} />
-                                </button>
-                                <span className="font-bold w-8 text-center">
-                                  {item.quantity}
-                                </span>
-                                <button
-                                  onClick={() =>
-                                    updateQuantity(item.id, item.quantity + 1)
-                                  }
-                                  className="w-8 h-8 rounded-full bg-amber-900 text-white flex items-center justify-center hover:bg-amber-800 active:scale-95 transition-all"
-                                  aria-label="Tambah jumlah"
-                                >
-                                  <FaPlus size={12} />
-                                </button>
+                        return (
+                          <div
+                            key={item.id}
+                            className="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm transform transition-transform hover:scale-[1.01]"
+                          >
+                            <div className="flex gap-4">
+                              <div className="w-20 h-20 rounded-xl overflow-hidden shrink-0">
+                                <img
+                                  src={item.image}
+                                  alt={item.name}
+                                  className="w-full h-full object-cover"
+                                />
                               </div>
-                              <div className="text-right">
-                                <div className="text-sm text-gray-500">
-                                  Total
-                                </div>
-                                <div className="font-bold text-amber-900">
-                                  {formatPrice(itemTotal)}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-
-                {showForm && (
-                  <div className="animate-fadeIn mb-6">
-                    <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4">
-                      <div className="flex items-center gap-2 mb-4">
-                        <FaUser className="text-amber-900" size={18} />
-                        <h3 className="font-bold text-gray-900">
-                          Informasi Pesanan
-                        </h3>
-                      </div>
-
-                      <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Nama Anda *
-                        </label>
-                        <input
-                          type="text"
-                          value={customerName}
-                          onChange={(e) => setCustomerName(e.target.value)}
-                          placeholder="Masukkan nama lengkap"
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
-                          required
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          <FaStore
-                            className="inline mr-2 text-amber-900"
-                            size={16}
-                          />
-                          Pilih Outlet Pengambilan *
-                        </label>
-                        <div className="space-y-3 max-h-48 overflow-y-auto pr-2">
-                          {OUTLET_OPTIONS.map((outlet) => (
-                            <div
-                              key={outlet.id}
-                              className={`p-4 border rounded-xl cursor-pointer transition-all transform hover:scale-[1.01] ${
-                                selectedOutlet === outlet.id
-                                  ? "border-amber-900 bg-amber-100"
-                                  : "border-gray-300 hover:bg-gray-50"
-                              }`}
-                              onClick={() => setSelectedOutlet(outlet.id)}
-                            >
-                              <div className="flex items-start">
-                                <div
-                                  className={`w-5 h-5 rounded-full border flex items-center justify-center mt-0.5 mr-3 transition-all ${
-                                    selectedOutlet === outlet.id
-                                      ? "border-amber-900 bg-amber-900"
-                                      : "border-gray-400"
-                                  }`}
-                                >
-                                  {selectedOutlet === outlet.id && (
-                                    <div className="w-2 h-2 rounded-full bg-white"></div>
-                                  )}
-                                </div>
-                                <div>
-                                  <div
-                                    className={`font-medium transition-colors ${
-                                      selectedOutlet === outlet.id
-                                        ? "text-amber-900"
-                                        : "text-gray-900"
-                                    }`}
+                              <div className="flex-1">
+                                <div className="flex justify-between items-start mb-2">
+                                  <h4 className="font-bold text-gray-900 line-clamp-1">
+                                    {item.name}
+                                  </h4>
+                                  <button
+                                    onClick={() => removeFromCart(item.id)}
+                                    className="text-red-500 hover:text-red-700 transition-colors p-1"
+                                    aria-label={`Hapus ${item.name} dari keranjang`}
                                   >
-                                    {outlet.name}
+                                    <FaTrash size={16} />
+                                  </button>
+                                </div>
+
+                                <div className="flex justify-between items-center">
+                                  <div className="flex items-center gap-3">
+                                    <button
+                                      onClick={() =>
+                                        updateQuantity(
+                                          item.id,
+                                          item.quantity - 1,
+                                        )
+                                      }
+                                      className={`w-4 h-4 rounded-full flex items-center justify-center transition-all ${
+                                        item.quantity <= 1
+                                          ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                                          : "bg-gray-200 text-gray-700 hover:bg-gray-300 active:scale-95"
+                                      }`}
+                                      disabled={item.quantity <= 1}
+                                      aria-label="Kurangi jumlah"
+                                    >
+                                      <FaMinus size={12} />
+                                    </button>
+                                    <span className="font-bold w-8 text-center">
+                                      {item.quantity}
+                                    </span>
+                                    <button
+                                      onClick={() =>
+                                        updateQuantity(
+                                          item.id,
+                                          item.quantity + 1,
+                                        )
+                                      }
+                                      className="w-4 h-4 rounded-full bg-amber-900 text-white flex items-center justify-center hover:bg-amber-800 active:scale-95 transition-all"
+                                      aria-label="Tambah jumlah"
+                                    >
+                                      <FaPlus size={12} />
+                                    </button>
+                                  </div>
+                                  <div className="text-right">
+                                    <div className="text-sm text-gray-500">
+                                      Total
+                                    </div>
+                                    <div className="font-bold text-amber-900">
+                                      {formatPrice(itemTotal)}
+                                    </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                          ))}
-                        </div>
-                      </div>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
-                )}
-              </div>
 
-              <div className="border-t border-gray-200 bg-white pt-6 pb-8 px-4 sm:px-6 mt-auto">
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    {cartItems.map((item) => {
-                      const itemPrice = parsePrice(item.price);
-                      const itemTotal = itemPrice * item.quantity;
-
-                      return (
-                        <div
-                          key={item.id}
-                          className="flex justify-between text-sm animate-fadeInUp"
-                          style={{ animationDelay: `${cartItems.indexOf(item) * 50}ms` }}
-                        >
-                          <span className="text-gray-600">
-                            {item.name} x{item.quantity}
-                          </span>
-                          <span>{formatPrice(itemTotal)}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  <div className="border-t pt-4">
-                    <div className="flex justify-between items-center mb-6">
-                      <span className="text-lg font-bold text-gray-900">
-                        Total
-                      </span>
-                      <span className="text-2xl font-bold text-amber-900 animate-pulse-once">
-                        {formatPrice(getCartTotal())}
-                      </span>
-                    </div>
-
+                  {/* BOTTOM ACTION - KERANJANG */}
+                  <div className="border-t border-gray-200 bg-white pt-6 pb-8 px-4 sm:px-6">
                     <div className="space-y-4">
-                      {!showForm ? (
-                        <button
-                          onClick={handleProceedToCheckout}
-                          className="w-full py-4 bg-amber-900 text-white rounded-xl font-bold hover:bg-amber-800 active:scale-[0.98] transition-all shadow-lg hover:shadow-xl"
-                        >
-                          Lanjutkan ke Checkout
-                        </button>
-                      ) : (
-                        <>
+                      <div className="space-y-2">
+                        {cartItems.map((item) => {
+                          const itemPrice = parsePrice(item.price);
+                          const itemTotal = itemPrice * item.quantity;
+
+                          return (
+                            <div
+                              key={item.id}
+                              className="flex justify-between text-sm"
+                            >
+                              <span className="text-gray-600">
+                                {item.name} x {item.quantity}
+                              </span>
+                              <span>{formatPrice(itemTotal)}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      <div className="border-t pt-4">
+                        <div className="flex justify-between items-center mb-6">
+                          <span className="text-lg font-bold text-gray-900">
+                            Total
+                          </span>
+                          <span className="text-2xl font-bold text-amber-900">
+                            {formatPrice(getCartTotal())}
+                          </span>
+                        </div>
+
+                        <div className="space-y-4">
                           <button
-                            onClick={handleWhatsAppCheckout}
-                            className="w-full py-4 bg-green-600 text-white rounded-xl font-bold hover:bg-green-700 active:scale-[0.98] transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
+                            onClick={handleProceedToCheckout}
+                            className="w-full py-4 bg-amber-900 text-white rounded-xl font-bold hover:bg-amber-800 active:scale-[0.98] transition-all shadow-lg hover:shadow-xl"
                           >
-                            <FaWhatsapp size={20} />
-                            Kirim Pesanan ke WhatsApp
+                            Lanjutkan ke Checkout
                           </button>
 
-                          <button
-                            onClick={() => setShowForm(false)}
-                            className="w-full py-4 border-2 border-amber-900 text-amber-900 rounded-xl hover:bg-amber-50 active:scale-[0.98] transition-all font-bold mt-2"
-                          >
-                            Kembali ke Keranjang
-                          </button>
-                        </>
-                      )}
-
-                      {!showForm && (
-                        <>
-                          <div className="grid grid-cols-2 gap-4 mt-4">
+                          <div className="grid grid-cols-2 gap-4 mb-9">
                             <button
                               onClick={clearCart}
                               className="py-3 border border-red-500 text-red-500 rounded-xl hover:bg-red-50 active:scale-[0.98] transition-all font-medium"
@@ -509,21 +442,168 @@ const CartSidebar = ({ isOpen, onClose }) => {
                               pesanan
                             </p>
                           </div>
-                        </>
-                      )}
-
-                      {showForm && (
-                        <div className="text-center text-xs text-gray-500 pt-4 border-t border-gray-100 mt-4">
-                          <p>
-                            Pastikan nama dan outlet sudah benar sebelum
-                            mengirim pesanan
-                          </p>
                         </div>
-                      )}
+                      </div>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div className="flex-1 flex flex-col">
+                  {/* FORM CHECKOUT */}
+                  <div className="flex-1 overflow-y-auto p-4 sm:p-6">
+                    <div className="mb-8">
+                      <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-6">
+                        <div className="flex items-center gap-2 mb-4">
+                          <FaUser className="text-amber-900" size={18} />
+                          <h3 className="font-bold text-gray-900">
+                            Informasi Pesanan
+                          </h3>
+                        </div>
+
+                        {/* INPUT NAMA */}
+                        <div className="mb-6">
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Nama Anda *
+                          </label>
+                          <input
+                            type="text"
+                            value={customerName}
+                            onChange={(e) => setCustomerName(e.target.value)}
+                            placeholder="Masukkan nama lengkap"
+                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+                            required
+                            autoFocus
+                          />
+                          {!customerName.trim() && (
+                            <p className="text-red-500 text-xs mt-1">
+                              Nama wajib diisi
+                            </p>
+                          )}
+                        </div>
+
+                        <div className="relative">
+                          <button
+                            type="button"
+                            onClick={() => setIsOutletOpen(!isOutletOpen)}
+                            className={`w-full px-4 py-3 text-left border rounded-xl flex items-center justify-between transition-all ${
+                              selectedOutletName
+                                ? "border-amber-900 bg-amber-50"
+                                : "border-gray-300 hover:border-gray-400"
+                            }`}
+                          >
+                            <div className="flex items-center gap-2">
+                              <FaStore className="text-amber-900" size={16} />
+                              <span
+                                className={
+                                  selectedOutletName
+                                    ? "text-amber-900 font-medium"
+                                    : "text-gray-500"
+                                }
+                              >
+                                {selectedOutletName ||
+                                  "Pilih Outlet Pengambilan *"}
+                              </span>
+                            </div>
+                            <FaChevronDown
+                              className={`transition-transform duration-200 ${
+                                isOutletOpen ? "rotate-180" : ""
+                              } ${selectedOutletName ? "text-amber-900" : "text-gray-400"}`}
+                              size={14}
+                            />
+                          </button>
+
+                          {isOutletOpen && (
+                            <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-xl shadow-lg max-h-60 overflow-y-auto">
+                              <div className="py-2">
+                                {OUTLET_OPTIONS.map((outlet) => (
+                                  <div
+                                    key={outlet.id}
+                                    className={`px-4 py-3 cursor-pointer transition-colors ${
+                                      selectedOutlet === outlet.id
+                                        ? "bg-amber-50 text-amber-900 font-medium"
+                                        : "hover:bg-gray-50 text-gray-700"
+                                    }`}
+                                    onClick={() => {
+                                      setSelectedOutlet(outlet.id);
+                                      setIsOutletOpen(false);
+                                    }}
+                                  >
+                                    {outlet.name}
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* RINGKASAN PESANAN */}
+                      <div className="bg-gray-50 border border-gray-200 rounded-2xl p-4">
+                        <h3 className="font-bold text-gray-900 mb-3">
+                          Ringkasan Pesanan
+                        </h3>
+                        <div className="space-y-2">
+                          {cartItems.map((item) => {
+                            const itemPrice = parsePrice(item.price);
+                            const itemTotal = itemPrice * item.quantity;
+                            return (
+                              <div
+                                key={item.id}
+                                className="flex justify-between text-sm"
+                              >
+                                <span className="text-gray-600">
+                                  {item.name} x {item.quantity}
+                                </span>
+                                <span>{formatPrice(itemTotal)}</span>
+                              </div>
+                            );
+                          })}
+                          <div className="border-t pt-2 mt-2">
+                            <div className="flex justify-between font-bold text-lg">
+                              <span>Total</span>
+                              <span className="text-amber-900">
+                                {formatPrice(getCartTotal())}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* BOTTOM ACTION - CHECKOUT */}
+                  <div className="border-t border-gray-200 bg-white pt-6 pb-8 px-4 sm:px-6">
+                    <div className="space-y-4">
+                      <button
+                        onClick={handleWhatsAppCheckout}
+                        disabled={!customerName.trim()}
+                        className={`w-full py-4 rounded-xl font-bold active:scale-[0.98] transition-all shadow-lg flex items-center justify-center gap-3 ${
+                          customerName.trim()
+                            ? "bg-green-600 text-white hover:bg-green-700 hover:shadow-xl"
+                            : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                        }`}
+                      >
+                        <FaWhatsapp size={20} />
+                        Kirim Pesanan ke WhatsApp
+                      </button>
+
+                      <button
+                        onClick={handleBackToCart}
+                        className="w-full py-4 border-2 border-amber-900 text-amber-900 rounded-xl hover:bg-amber-50 active:scale-[0.98] transition-all font-bold"
+                      >
+                        Kembali ke Keranjang
+                      </button>
+
+                      <div className="text-center text-xs text-gray-500 pt-4 border-t border-gray-100">
+                        <p>
+                          Pastikan nama dan outlet sudah benar sebelum mengirim
+                          pesanan
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              )}
             </>
           )}
         </div>

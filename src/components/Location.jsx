@@ -64,16 +64,16 @@ export default function LocationsSection () {
             <div className="w-24 h-1 bg-amber-900 mx-auto mt-6"></div>
           </div>
 
+
           <div className="flex flex-col lg:flex-row gap-8">
-            
-            <div className="lg:w-2/5">
-              <div className="bg-white rounded-2xl shadow-lg p-6 lg:sticky lg:top-24">
+            <div className=" lg:w-2/5">
+              <div className="h-160 bg-white rounded-2xl shadow-lg p-6 lg:sticky lg:top-24">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                   <FaMotorcycle className="text-amber-900" />
                   {locationStats.totalLocations} Titik Gerobak
                 </h3>
                 
-                <div className="space-y-3 mb-6 max-h-96 overflow-y-auto pr-2">
+                <div className="space-y-3 mb-6 max-h-130 overflow-y-auto pr-2 ">
                   {gerobakLocations.map((outlet) => (
                     <button
                       key={outlet.id}
@@ -135,7 +135,7 @@ export default function LocationsSection () {
                   ))}
                 </div>
 
-                <div className="grid grid-cols-3 gap-3 text-center pt-6 border-t border-gray-200">
+                {/* <div className="grid grid-cols-3 gap-3 text-center pt-6 border-t border-gray-200">
                   <div>
                     <div className="text-2xl font-bold text-amber-900">{locationStats.totalLocations}</div>
                     <div className="text-xs text-gray-600">Titik</div>
@@ -148,12 +148,12 @@ export default function LocationsSection () {
                     <div className="text-2xl font-bold text-amber-900">{locationStats.averageHours.split(' ')[0]}</div>
                     <div className="text-xs text-gray-600">Jam/Hari</div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
 
             <div className="lg:w-3/5">
-              <div className="hidden lg:block">
+              <div className="hidden lg:block"> 
                 <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
                   <div className="h-64 bg-linear-to-r from-amber-900 to-amber-700 relative overflow-hidden">
                     <div className="absolute inset-0 flex items-center justify-center">
