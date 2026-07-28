@@ -46,9 +46,8 @@ const OUTLET_OPTIONS = [
   { id: 2, name: "Sore Coffee Batu 8", address: "-" },
   { id: 3, name: "Sore Coffee Hotel Comfort", address: "-" },
   { id: 4, name: "Sore Coffee Ganet", address: "-" },
-  { id: 5, name: "Sore Coffee Jl.Pemuda", address: "-" },
-  { id: 6, name: "Sore Coffee Tepi Laut", address: "-" },
-  { id: 7, name: "Sore Coffee Batu 16 Uban", address: "-" },
+  { id: 5, name: "Sore Coffee BRK Batu 9", address: "-" },
+  { id: 6, name: "Sore Coffee Batu 14", address: "-" },
 ];
 
 const CartSidebar = ({ isOpen, onClose }) => {
@@ -176,7 +175,6 @@ const CartSidebar = ({ isOpen, onClose }) => {
       clearCart();
       setCustomerName("");
       setSelectedOutlet(OUTLET_OPTIONS[0].id);
-      // setShowForm(false);
       handleClose();
     }
   };
@@ -200,10 +198,6 @@ const CartSidebar = ({ isOpen, onClose }) => {
     if (isOpen) {
       document.addEventListener("keydown", handleEscape);
       document.body.style.overflow = "hidden";
-
-      // if (cartItems.length === 0) {
-      //   setShowForm(false);
-      // }
     }
 
     return () => {
@@ -230,7 +224,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
       />
 
       <div
-        className={`fixed top-0 right-0 h-full w-full sm:w-96 z-50 bg-white shadow-2xl transform transition-all duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 h-full w-full sm:max-w-100 z-50 bg-white shadow-2xl transform transition-all duration-300 ease-in-out ${
           isAnimating ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -320,15 +314,15 @@ const CartSidebar = ({ isOpen, onClose }) => {
                                   </h4>
                                   <button
                                     onClick={() => removeFromCart(item.id)}
-                                    className="text-red-500 hover:text-red-700 transition-colors p-1"
+                                    className="text-red-500 hover:text-red-700 transition-colors flex items-center justify-center "
                                     aria-label={`Hapus ${item.name} dari keranjang`}
                                   >
-                                    <FaTrash size={16} />
+                                    <FaTrash size={18} />
                                   </button>
                                 </div>
 
                                 <div className="flex justify-between items-center">
-                                  <div className="flex items-center gap-3">
+                                  <div className="flex items-center gap-1 sm:gap-1.5 md:gap-2">
                                     <button
                                       onClick={() =>
                                         updateQuantity(
@@ -336,7 +330,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                                           item.quantity - 1,
                                         )
                                       }
-                                      className={`w-4 h-4 rounded-full flex items-center justify-center transition-all ${
+                                      className={`w-6 sm:w-7 md:w-8 h-6 sm:h-7 md:h-8 rounded-full flex items-center justify-center transition-all ${
                                         item.quantity <= 1
                                           ? "bg-gray-200 text-gray-400 cursor-not-allowed"
                                           : "bg-gray-200 text-gray-700 hover:bg-gray-300 active:scale-95"
@@ -344,11 +338,16 @@ const CartSidebar = ({ isOpen, onClose }) => {
                                       disabled={item.quantity <= 1}
                                       aria-label="Kurangi jumlah"
                                     >
-                                      <FaMinus size={12} />
+                                      <FaMinus
+                                        size={10}
+                                        className="sm:size-3 md:size-4"
+                                      />
                                     </button>
-                                    <span className="font-bold w-8 text-center">
+
+                                    <span className="font-bold text-sm sm:text-base md:text-lg w-6 sm:w-8 md:w-10 text-center">
                                       {item.quantity}
                                     </span>
+
                                     <button
                                       onClick={() =>
                                         updateQuantity(
@@ -356,17 +355,20 @@ const CartSidebar = ({ isOpen, onClose }) => {
                                           item.quantity + 1,
                                         )
                                       }
-                                      className="w-4 h-4 rounded-full bg-amber-900 text-white flex items-center justify-center hover:bg-amber-800 active:scale-95 transition-all"
+                                      className="w-6 sm:w-7 md:w-8 h-6 sm:h-7 md:h-8 rounded-full bg-amber-900 text-white flex items-center justify-center hover:bg-amber-800 active:scale-95 transition-all"
                                       aria-label="Tambah jumlah"
                                     >
-                                      <FaPlus size={12} />
+                                      <FaPlus
+                                        size={10}
+                                        className="sm:size-3 md:size-4"
+                                      />
                                     </button>
                                   </div>
                                   <div className="text-right">
                                     <div className="text-sm text-gray-500">
                                       Total
                                     </div>
-                                    <div className="font-bold text-amber-900">
+                                    <div className="font-semibold text-amber-900">
                                       {formatPrice(itemTotal)}
                                     </div>
                                   </div>
@@ -381,8 +383,8 @@ const CartSidebar = ({ isOpen, onClose }) => {
 
                   {/* BOTTOM ACTION - KERANJANG */}
                   <div className="border-t border-gray-200 bg-white pt-6 pb-8 px-4 sm:px-6">
-                    <div className="space-y-4">
-                      <div className="space-y-2">
+                    <div className="space-y-2">
+                      {/* <div className="space-y-1 p-1">
                         {cartItems.map((item) => {
                           const itemPrice = parsePrice(item.price);
                           const itemTotal = itemPrice * item.quantity;
@@ -399,7 +401,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                             </div>
                           );
                         })}
-                      </div>
+                      </div> */}
 
                       <div className="border-t pt-4">
                         <div className="flex justify-between items-center mb-6">
@@ -450,7 +452,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
               ) : (
                 <div className="flex-1 flex flex-col">
                   {/* FORM CHECKOUT */}
-                  <div className="flex-1 overflow-y-auto p-4 sm:p-6">
+                  <div className="flex-1 p-4 sm:p-6">
                     <div className="mb-8">
                       <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-6">
                         <div className="flex items-center gap-2 mb-4">
@@ -538,11 +540,11 @@ const CartSidebar = ({ isOpen, onClose }) => {
                       </div>
 
                       {/* RINGKASAN PESANAN */}
-                      <div className="bg-gray-50 border border-gray-200 rounded-2xl p-4">
+                      <div className="bg-gray-50 border border-gray-200 rounded-2xl p-4 overflow-y-auto">
                         <h3 className="font-bold text-gray-900 mb-3">
                           Ringkasan Pesanan
                         </h3>
-                        <div className="space-y-2">
+                        <div className="space-y-2 h-32 overflow-y-auto">
                           {cartItems.map((item) => {
                             const itemPrice = parsePrice(item.price);
                             const itemTotal = itemPrice * item.quantity;
@@ -572,7 +574,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                   </div>
 
                   {/* BOTTOM ACTION - CHECKOUT */}
-                  <div className="border-t border-gray-200 bg-white pt-6 pb-8 px-4 sm:px-6">
+                  <div className=" sticky bottom-0 border-t border-gray-200 bg-white pt-6 pb-8 px-4 sm:px-6 ">
                     <div className="space-y-4">
                       <button
                         onClick={handleWhatsAppCheckout}
@@ -593,13 +595,6 @@ const CartSidebar = ({ isOpen, onClose }) => {
                       >
                         Kembali ke Keranjang
                       </button>
-
-                      <div className="text-center text-xs text-gray-500 pt-4 border-t border-gray-100">
-                        <p>
-                          Pastikan nama dan outlet sudah benar sebelum mengirim
-                          pesanan
-                        </p>
-                      </div>
                     </div>
                   </div>
                 </div>

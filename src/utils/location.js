@@ -4,10 +4,11 @@ export const gerobakLocations = [
     name: "Sore Coffee - Bintan Centre",
     shortName: "Bintan Centre",
     address: "Area Bundaran Patung Naga",
-    exactLocation: "Bundaran Patung Naga, Bintan Centre, Tanjungpinang",
+    exactLocation: "Depan D'sayur Bundaran Patung Naga",
     googleMaps:
       "https://maps.app.goo.gl/i8PjkLuFUGh4hS4w9",
     hours: "08:00 - 22:00",
+    phone: "6285222255234",
     // description:
     //   "Gerobak kopi di tengah kawasan Bintan Centre, dekat Patung Naga ikonik",
     landmark: "Bundaran Patung Naga Bintan Centre",
@@ -16,11 +17,12 @@ export const gerobakLocations = [
     id: 1,
     name: "Sore Coffee - Batu 8",
     shortName: "Batu 8",
-    address: "Kawasan bundaran TCC Mall",
+    address: "Area bundaran TCC Mall",
     exactLocation: "Sebelum Bundaran TCC Mall dari arah Bt 9",
     googleMaps:
       "https://maps.app.goo.gl/eHkcxT5fEux8RhCBA",
     hours: "08:00 - 22:00",
+    phone: "6285222255234",
     // description:
     //   "Gerobak kopi strategis di depan TCC Mall, pusat perbelanjaan Tanjungpinang",
     landmark: "Bundaran TCC Mall",
@@ -34,6 +36,7 @@ export const gerobakLocations = [
     googleMaps:
       "https://maps.app.goo.gl/yfYfP1BhoGjTr2aDA",
     hours: "08:00 - 22:00",
+    phone: "6285222255234",
     // description:
     //   "Gerobak kopi di area hotel, cocok untuk tamu hotel dan warga sekitar",
     landmark: "Hotel Comfort Tanjungpinang",
@@ -46,7 +49,7 @@ export const gerobakLocations = [
     exactLocation: "Jl.Bandara Tanjungpinang",
     googleMaps:
       "https://maps.app.goo.gl/7CFWdMcfAaZgcHsm9",
-
+    phone: "6285222255234",
     hours: "08:00 - 22:00",
     // description: "Gerobak kopi di depan Pasar Ganet, ramai pengunjung pasar",
 
@@ -54,42 +57,30 @@ export const gerobakLocations = [
   },
   {
     id: 4,
-    name: "Sore Coffee - Pemuda",
-    shortName: "Pemuda",
-    address: "Jl. Pemuda",
-    exactLocation: "Persimpangan Jl. Pemuda dan Jl. Merdeka, Tanjungpinang",
+    name: "Sore Coffee - BRK Batu 9",
+    shortName: "BRK Batu 9",
+    address: "Jl.D.I.Panjaitan Batu 9",
+    exactLocation: "Depan Bank Riau Kepri batu 9",
     googleMaps:
-      "https://maps.app.goo.gl/?link=https://www.google.com/maps/place/Jl.+Pemuda,+Tanjungpinang+Kota,+Tanjungpinang+City,+Riau+Islands/@0.9228944,104.4552133,17z&apif_1&usp=sharing",
-
+      "https://maps.app.goo.gl/MvjrWWEPD2AiRDkj8",
     hours: "08:00 - 22:00",
-    // description: "Gerobak kopi di jantung kota, dekat pusat aktivitas pemuda",
-    landmark: "Kawasan Jl. Pemuda",
-  },
-  {
-    id: 5,
-    name: "Sore Coffee - Tepi Laut",
-    shortName: "Tepi Laut",
-    address: "Kawasan Tepi Laut",
-    exactLocation: "Sepanjang jalan Tepi Laut, dekat Pelabuhan Sri Bintan Pura",
-    googleMaps:
-      "https://maps.app.goo.gl/MVeWgqFJ5z1igZMb7",
-    hours: "08:00 - 22:00",
-    phone: "0817-8901-2345",
+    phone: "6285222255234",
     // description: "Gerobak kopi dengan view laut, cocok untuk menikmati sunset",
     landmark: "Kawasan Tepi Laut",
   },
   {
-    id: 6,
-    name: "Sore Coffee - Batu 16 Uban",
-    shortName: "Batu 16",
-    address: "Kawasan Batu 16",
-    exactLocation: "Jl. Raya Batu 16, dekat perumahan Uban, Tanjungpinang",
+    id: 5,
+    name: "Sore Coffee - Batu 14",
+    shortName: "Batu 14",
+    address: "Batu 14 Arah Uban",
+    exactLocation: "Depan Perumahan Permata Galaxy",
     googleMaps:
-      "https://maps.app.goo.gl/?link=https://www.google.com/maps/place/Batu+16+Tanjungpinang/@0.9178894,104.4934567,17z&apif_1&usp=sharing",
+      "https://maps.app.goo.gl/8tsUDm1FRs3EFEi99",
 
+      phone: "6285222255234",
     hours: "08:00 - 22:00",
     // description: "Gerobak kopi di kawasan perumahan, cocok untuk warga sekitar",
-    landmark: "Kawasan Perumahan Uban",
+    landmark: "Perumahan Permata Galaxy",
   },
 ];
 
@@ -116,17 +107,17 @@ export const generateGoogleMapsUrl = (address) => {
 
 export const generateWhatsAppOrderUrl = (
   locationName,
-  phone = "6281367048816",
+  phone = "6285222255234",
 ) => {
   const message = `Halo Sore Coffee, saya mau pesan untuk diambil di: ${locationName}`;
   return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 };
 
 export const locationStats = {
-  totalLocations: 7,
+  totalLocations: 6,
   cities: ["Tanjungpinang"],
   averageHours: "14 jam/hari",
   operatingHours: "08:00 - 22:00",
-  contactNumber: "0813-6704-8816",
+  contactNumber: "6285222255234",
   email: "sorecoffee.tpi@gmail.com",
 };

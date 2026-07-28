@@ -264,7 +264,7 @@ export default function BottomSheet({ menu, isOpen, onClose }) {
             </div>
           </div>
 
-          <div className="sticky bottom-0 left-0 right-0 bg-white pt-4 border-t">
+          <div className="sticky bottom-0 left-0 right-0 bg-white pt-4 pb-4 px-4 sm:px-6 border-t border-amber-100 shadow-lg z-50 ">
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleClose}

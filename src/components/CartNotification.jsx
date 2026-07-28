@@ -33,8 +33,8 @@ export default function CartNotification() {
   if (!notification || !isVisible) return null;
 
   return (
-    <div className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-sm">
-      <div className={`bg-linear-to-r from-green-500 to-emerald-600 text-white px-5 py-4 rounded-xl shadow-2xl border border-white/20 flex items-center gap-3 mx-4 transition-all duration-300 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0'}`}>
+    <div className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50 w-[360px]">
+      <div className={`bg-linear-to-r from-green-500 to-emerald-600 text-white px-5 py-4 rounded-xl shadow-2xl border border-white/20 flex items-center gap-3 transition-all duration-300 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0'}`}>
         <div className="flex-1">
           <p className="font-medium text-sm">{notification.message}</p>
         </div>

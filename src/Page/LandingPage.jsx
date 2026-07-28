@@ -4,7 +4,6 @@ import About from "../components/About";
 import Footer from "../components/Footer";
 import Location from "../components/Location";
 import TestimonialSection from "../components/Testimoni";
-// import InstagramSection from "../components/InstagramSection";
 
 export default function LandingPage() {
   return (
@@ -14,7 +13,6 @@ export default function LandingPage() {
       <About />
       <Location />
       <TestimonialSection />
-      {/*<InstagramSection/> */}
       <Footer />
     </>
   );

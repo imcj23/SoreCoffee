@@ -3,7 +3,7 @@ export const testimonials = [
     id: 1,
     name: 'Rina Wijaya',
     role: 'Mahasiswa',
-    comment: 'Americanonya kuat dan berkarakter! Rasa kopinya authentic, tidak terlalu pahit tapi tetap punya body yang full. Padahal hanya dijual dari gerobak, kualitasnya seperti dari coffee shop premium.',
+    comment: 'Americano nya enak, strong tapi ngak yang pahit banget, kesukaan coffee lovers sih ini',
     rating: 5,
     instagram: '@rinawjy',
     photo: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
@@ -12,7 +12,7 @@ export const testimonials = [
     id: 2,
     name: 'Budi Santoso',
     role: 'Mahasiswa',
-    comment: 'Spanish Latte-nya creamy dan balanced! Rasanya pas antara kopi, susu, dan manisnya. Meski cuma beli dari gerobak, rasanya konsisten tiap hari.',
+    comment: 'Suka banget sama Spanish Latte-nya. Creamy, nggak terlalu manis, dan kopinya tetap berasa. Rasanya selalu sama tiap beli.',
     rating: 4,
     instagram: '@budisant',
     photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
@@ -21,54 +21,54 @@ export const testimonials = [
     id: 3,
     name: 'Sari',
     role: 'Content Creator',
-    comment: 'Butterscotch-nya unik dan enak banget! Rasa karamel butterynya berpadu sempurna dengan kopi. Cocok buat yang suka minuman manis tapi tetap mau taste kopinya keluar.',
+    comment: 'butterscotch-nya juara! Rasa karamel berasa banget tapi tetap balance sama kopinya. Nggak terlalu manis dan tetap ada karakter kopinya.',
     rating: 5,
     instagram: '@saridewicreator',
     photo: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
   },
   {
     id: 4,
-    name: 'Agus Prabowo',
-    role: 'Wirausaha',
-    comment: 'Aren Lattenya natural banget! Gulanya pakai gula aren asli, bukan sirup. Rasanya earthy dan khas, tidak terlalu manis. Kopinya tetap terasa meski pakai susu dan gula aren.',
+    name: 'Ridwan Permadi',
+    role: 'video editor',
+    comment: ' Aren lattenya manisnya pas ngak lebay di mulut, kopi nya tetap terasa, mantap lah pokoknya sore coffee👏👏',
     rating: 5,
-    instagram: '@agusprab',
+    instagram: '@ridwanpermadi',
     photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
   },
   {
     id: 5,
-    name: 'Maya Fitriani',
-    role: 'Freelancer',
-    comment: 'Japanese Matchanya authentic! Matchanya berkualitas, tidak terlalu pahit dan tidak terlalu manis. Rasanya seperti matcha yang disajikan di kafe Jepang beneran.',
+    name: 'Aisyah',
+    role: 'Wiraswasta',
+    comment: 'Japanese Matchanya enak, gak terlalu pahit dan gak terlalu kemanisan. rasanya pas.',
     rating: 4,
-    instagram: '@mayafitri',
+    instagram: '@aisyahshmbg',
     photo: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
   },
   {
     id: 6,
-    name: 'Dimas Arya',
-    role: 'Pelajar',
-    comment: 'Chocolatenya rich dan tidak terlalu manis! Cocok buat yang bukan penggemar kopi. Rasanya seperti minuman cokelat premium, bukan cokelat bubuk biasa.',
+    name: 'Brezen',
+    role: 'Mahasiswa',
+    comment: 'Pecinta coklat ngak nyesal lah cobain varian chocolate nya, manis, kental nya pas ngak bikin eneg. Wajib coba klen we!',
     rating: 5,
-    instagram: '@dimasarya_',
+    instagram: '@brejen12',
     photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
   },
   {
     id: 7,
-    name: 'Tika Andini',
+    name: 'Hendi',
     role: 'Mahasiswa',
-    comment: 'Pink Panther-nya refreshing dan unik! Kombinasi buah dan creamy-nya pas. Meski bukan kopi, tetap jadi andalan untuk yang ingin sesuatu yang berbeda. Rasanya seperti dessert in a cup!',
+    comment: 'Selama di Tanjungpinang  favorite aku sih ini, semua minumannya enak, ada di mana - mana, abangnya baik, ramah enak diajak ngobrol, ada versi kaleng pulak jadi bisa bawa kemana mana',
     rating: 5,
-    instagram: '@tikaandini',
+    instagram: '@hendi',
     photo: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
   },
-  {
-    id: 8,
-    name: 'Rizky Pratama',
-    role: 'Office Worker',
-    comment: 'Sebagai takeaway coffee, rasa Americanonya tetap terjaga! Meski dibawa pulang, aroma dan rasanya tidak berubah. Perfect untuk kopi pagi sebelum kerja.',
-    rating: 4,
-    instagram: '@rizkyprat',
-    photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
-  }
+  // {
+  //   id: 8,
+  //   name: 'Rizky Pratama',
+  //   role: 'Office Worker',
+  //   comment: 'Sebagai takeaway coffee, rasa Americanonya tetap terjaga! Meski dibawa pulang, aroma dan rasanya tidak berubah. Perfect untuk kopi pagi sebelum kerja.',
+  //   rating: 4,
+  //   instagram: '@rizkyprat',
+  //   photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
+  // }
 ]

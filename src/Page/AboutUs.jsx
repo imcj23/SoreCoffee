@@ -16,7 +16,7 @@ import {
   FaWhatsapp,
   FaInstagram,
 } from "react-icons/fa";
-import ownerImage from "../assets/photo/Owner.jpeg";
+import ownerImage from "../assets/photo/Ownersore.png";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import halalCertImage from "../assets/photo/logo_halal.svg";
@@ -80,7 +80,7 @@ export default function AboutUs() {
                 </h2>
                 <div className="space-y-3 md:space-y-4">
                   {[
-                    "Menyajikan kopi yang enak, jujur, dan mudah dijangkau untuk semua kalangan",
+                    "Menyajikan kopi yang nikmat, jujur, dan mudah dijangkau untuk semua kalangan",
                     "Menghadirkan pengalaman minum kopi yang santai dan hangat di setiap perjalanan",
                     "Menjadi tempat yang inklusif dan nyaman untuk semua kalangan",
                     "Menjadi bagian dari rutinitas dan cerita pelanggan, di mana pun Sorecoffee berhenti",
@@ -114,7 +114,9 @@ export default function AboutUs() {
                     className="rounded-2xl md:rounded-3xl shadow-xl md:shadow-2xl w-full"
                   />
                   <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-amber-800 text-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-lg md:shadow-xl">
-                    <p className="font-bold text-lg md:text-xl">Bagus Setiawan</p>
+                    <p className="font-bold text-lg md:text-xl">
+                      Bagus Setiawan
+                    </p>
                     <p className="text-amber-200 text-sm md:text-base">
                       Owner Sore Coffee
                     </p>
@@ -124,18 +126,26 @@ export default function AboutUs() {
 
               <div className="w-full lg:w-3/5">
                 <h2 className="text-2xl md:text-3xl font-bold text-amber-900 mb-4 md:mb-6">
-                  Cerita Pendiri
+                  Cerita SoreCoffee
                 </h2>
                 <div className="space-y-4 md:space-y-6 text-base md:text-lg">
                   <p>
-                    Sorecoffee lahir dari kecintaan pada kopi dan perjalanan.
-                    Berawal dari satu gerobak kopi keliling, kami mulai menyapa
-                    pelanggan sejak pagi hari—saat hari baru dimulai—hingga
-                    malam, ketika kota mulai melambat.
+                    Sorecoffee lahir dari kecintaan pada kopi dan keinginan
+                    menghadirkan rasa nyaman di setiap momen. Perjalanan kami
+                    dimulai dari produk kopi kaleng yang hadir di sebuah
+                    swalayan, menjadi teman praktis untuk menemani aktivitas
+                    sehari-hari.
                   </p>
                   <p>
-                    Meski namanya sorecoffee, bagi kami "sore" bukan cuma soal
-                    waktu, tapi soal rasa: jeda, santai, dan menikmati momen.
+                    Seiring waktu, pada tahun 2025, Sorecoffee berkembang lebih
+                    dekat dengan pelanggan melalui konsep kopi keliling
+                    menggunakan gerobak sepeda listrik. Dari satu titik ke titik
+                    lainnya, kami menyapa penikmat kopi secara langsung, membawa
+                    pengalaman yang lebih hangat dan personal. Meski bernama
+                    Sorecoffee, bagi kami “sore” bukan sekadar penanda waktu,
+                    melainkan tentang sebuah rasa jeda di tengah kesibukan,
+                    suasana santai, dan menikmati momen dengan secangkir kopi
+                    yang berkualitas.
                   </p>
                   <p className="italic text-amber-700">
                     "Berkeliling dari pagi sampai malam ngajarin kami satu hal:
@@ -143,7 +153,7 @@ export default function AboutUs() {
                     pembukanya."
                   </p>
 
-                  <div className="flex flex-wrap gap-3 md:gap-4 mt-6 md:mt-8">
+                  {/* <div className="flex flex-wrap gap-3 md:gap-4 mt-6 md:mt-8">
                     {[
                       { icon: <FaAward />, text: "Certified Q-Grader" },
                       { icon: <FaGlobeAmericas />, text: "5 Tahun Pengalaman" },
@@ -162,7 +172,7 @@ export default function AboutUs() {
                         </span>
                       </div>
                     ))}
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -175,7 +185,7 @@ export default function AboutUs() {
                   <img
                     src={halalCertImage}
                     alt="Sertifikat Halal MUI Sore Coffee"
-                    className="rounded-lg md:rounded-xl w-full max-w-75 mx-auto"
+                    className="rounded-lg md:rounded-xl w-50 max-w-75 mx-auto mb-10"
                   />
                 </div>
                 <div className="mt-4 md:mt-6 text-center">
@@ -185,7 +195,7 @@ export default function AboutUs() {
                   />
                   <p className="text-green-700 font-bold text-sm md:text-base">
                     No. Sertifikat: ID21110019080810524
-                  </p>
+                  </p> 
                   <p className="text-gray-600 text-sm md:text-base">
                     Berlaku hingga: Seumur Hidup
                   </p>
@@ -267,7 +277,7 @@ export default function AboutUs() {
                 {
                   step: "1",
                   title: "Biji Kopi Pilihan",
-                  desc: "Kami memilih biji kopi berkualitas dari petani dan roastery lokal untuk menjaga cita rasa khas Sorecoffee.",
+                  desc: "Kami memilih biji kopi berkualitas untuk menjaga cita rasa khas Sorecoffee.",
                   icon: <FaLeaf size={24} className="md:size-8" />,
                 },
                 {
